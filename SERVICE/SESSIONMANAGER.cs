@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SERVICE
 {
@@ -11,44 +12,59 @@ namespace SERVICE
     {
         USUARIO usuario;
         private static SESSIONMANAGER instancia;       
-        private int contadorIntentosFallidos;
+        private int contadorIntentosFallidos; //hacer!!!!!
         public SESSIONMANAGER() { }
 
         public static SESSIONMANAGER ObtenerInstancia()
         {
-            if(instancia == null)
-            {
-                throw new Exception("No hay una sesión iniciada.");
-            }
-            else
-            {
-                return instancia;
-            }                
+            return instancia;
         }
-        public void Login(USUARIO usuario)
+        public static bool Login(USUARIO usu)
         {
-            if(instancia == null)
-            {
-                instancia = new SESSIONMANAGER();
-                instancia.usuario = usuario;
-            }
-            else
-            {
-                throw new Exception("Ya hay una sesión iniciada.");
-            }
+            BLL.USUARIO_BLL gestorUsuario = new BLL.USUARIO_BLL();
 
-        }
-        public void Logout() 
-        {
-            if (instancia != null)
+            string contraseñaHasheada = ENCRIPTADO.Hashear(usu.Contraseña);
+            usu.Contraseña = contraseñaHasheada;
+
+            BE.USUARIO usuarioLogueado = gestorUsuario.ValidarUsuario(usu);
+
+            if(usuarioLogueado != null)
             {
+                if (instancia == null)
+                {                    
+                    instancia = new SESSIONMANAGER();
+                    instancia.usuario = usu;
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe una sesión iniciada en el sistema.", "Sesión Activa", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    return false;                                     
+                }
+            }
+            else
+            {
+                MessageBox.Show("Usuario o Contraseña incorrecta", "Sesión Activa",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return false;
+            }           
+        }
+        public bool Logout() 
+        {
+            if (instancia != null && instancia.usuario != null)
+            {                
+                //Bitacora
+                                
+                instancia.usuario = null;
                 instancia = null;
-            }
-            else
-            {
-                throw new Exception("No hay ninguna sesión iniciada.");
+
+                return true;
             }
 
+            return false;            
         }
 
 

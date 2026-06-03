@@ -10,9 +10,10 @@ namespace BLL
     {
         DAL.MP_USUARIO mapperUsuario = new DAL.MP_USUARIO();
 
-        public bool ValidarUsuario(BE.USUARIO usu)
+        public BE.USUARIO ValidarUsuario(BE.USUARIO usu)
         {
-            return true;
+            //ENCRIPTADO.Hashear(usu.Contraseña);
+            return mapperUsuario.ValidarUsuario(usu);
         }
 
         public void InsertarUsuario(BE.USUARIO usu)

@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Form1
+    partial class frmLogin
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -30,12 +30,13 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelInicioSesion = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelInicioSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,6 +62,7 @@
             // panelInicioSesion
             // 
             this.panelInicioSesion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelInicioSesion.Controls.Add(this.lblResultado);
             this.panelInicioSesion.Controls.Add(this.pictureBox1);
             this.panelInicioSesion.Controls.Add(this.txtContraseña);
             this.panelInicioSesion.Controls.Add(this.btnIniciarSesion);
@@ -71,6 +73,14 @@
             this.panelInicioSesion.Name = "panelInicioSesion";
             this.panelInicioSesion.Size = new System.Drawing.Size(388, 385);
             this.panelInicioSesion.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(41, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(320, 181);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // txtContraseña
             // 
@@ -84,12 +94,13 @@
             // btnIniciarSesion
             // 
             this.btnIniciarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIniciarSesion.Location = new System.Drawing.Point(88, 314);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(117, 316);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(244, 46);
+            this.btnIniciarSesion.Size = new System.Drawing.Size(185, 46);
             this.btnIniciarSesion.TabIndex = 8;
             this.btnIniciarSesion.Text = "Iniciar Sesion";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click_1);
             // 
             // txtNombre
             // 
@@ -122,13 +133,13 @@
             this.lblContraseña.TabIndex = 7;
             this.lblContraseña.Text = "Contraseña";
             // 
-            // pictureBox1
+            // lblResultado
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(41, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(320, 181);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(85, 287);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(0, 13);
+            this.lblResultado.TabIndex = 12;
             // 
             // Form1
             // 
@@ -157,6 +168,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblResultado;
     }
 }
 

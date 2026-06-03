@@ -8,6 +8,7 @@ namespace DAL
 {
     public abstract class MAPPER<T>
     {        
+        public ACCESO acceso = new ACCESO();
         public abstract void Insertar(T obj);
 
         public abstract void Updatear(T obj);

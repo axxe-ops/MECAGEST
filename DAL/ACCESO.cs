@@ -14,7 +14,8 @@ namespace DAL
 
         public void Abrir()
         {
-            conexion = new SqlConnection(@"Integrated Security=SSPI; Persist Security Info=False; Initial Catalog=Instituto;Data Source=NombreBD");
+            conexion = new SqlConnection(@"Integrated Security = SSPI; Initial Catalog= MECAGEST; Data Source = localhost\SQLEXPRESS");
+            conexion.Open();
         }
 
         public void Cerrar()
@@ -28,9 +29,10 @@ namespace DAL
         {
             SqlCommand cmd = new SqlCommand(sql, conexion);
             cmd.CommandType = CommandType.StoredProcedure;
+
             if (parametros != null)
             {
-                cmd.Parameters.Add(parametros);
+                cmd.Parameters.AddRange(parametros.ToArray());
             }
 
             return cmd;
