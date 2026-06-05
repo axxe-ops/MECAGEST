@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BITACORABLL.cs" />
     <Compile Include="ENCRIPTADO.cs" />
     <Compile Include="SESSIONMANAGER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{281f2876-be4c-4fcc-991f-87a90f8c4eaf}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{e2e269ad-d5ba-461a-88e6-35e4ae70de76}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

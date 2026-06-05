@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BE
+{
+    public class PermisoSimple : COMPONENTE
+    {
+        public override void Agregar(COMPONENTE componente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<COMPONENTE> ObtenerPermisos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Remover(COMPONENTE componente)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

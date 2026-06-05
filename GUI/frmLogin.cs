@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SERVICE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,9 +41,25 @@ namespace GUI
 
             if (exito)
             {
+                SERVICE.BITACORABLL.Registrar(                  
+                    "Inicio de sesión exitoso", //evento
+                    "El usuario ha ingresado al sistema desde la IP local.", //detalle
+                    1 // Criticidad Baja: evento rutinario
+                );
+
                 this.Hide();
                 frmMenuPrincipal form = new frmMenuPrincipal();
                 form.Show();
+            }
+            else
+            {
+                SERVICE.BITACORABLL.Registrar(
+                    "Intento de inicio de sesión fallido",
+                    $"El usuario intentó acceder sin éxito.",
+                    3
+                );
+
+                MessageBox.Show("Usuario o contraseña incorrectos.");
             }
             
         }

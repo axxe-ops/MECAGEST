@@ -41,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BITACORA.cs" />
+    <Compile Include="COMPONENTE.cs" />
+    <Compile Include="PermisoCompuesto.cs" />
+    <Compile Include="PermisoSimple.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

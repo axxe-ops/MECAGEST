@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class USUARIO
+    public abstract class COMPONENTE
     {
         private int id;
         public int Id
@@ -22,20 +22,8 @@ namespace BE
 			set { nombre = value; }
 		}
 
-		private string contraseña;
-		public string Contraseña
-		{
-			get { return contraseña; }
-			set { contraseña = value; }
-		}
-
-
-        public override string ToString()
-        {
-            return $"{nombre}";
-        }
-
-
-
+        public abstract void Agregar(COMPONENTE componente);
+        public abstract void Remover(COMPONENTE componente);
+        public abstract List<COMPONENTE> ObtenerPermisos();
 	}
 }

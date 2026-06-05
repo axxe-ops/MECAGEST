@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -67,19 +68,28 @@ namespace DAL
         public SqlParameter CrearParametro(string nombre, string valor)
         {
             SqlParameter param = new SqlParameter(nombre, valor);
-            param.DbType = DbType.String; return param;
+            param.DbType = DbType.String; 
+            return param;
         }
         public SqlParameter CrearParametro(string nombre, int valor)
         {
             SqlParameter param = new SqlParameter(nombre, valor);
-            param.DbType = DbType.Int32; return param;
+            param.DbType = DbType.Int32; 
+            return param;
         }
         public SqlParameter CrearParametro(string nombre, float valor)
         {
             SqlParameter param = new SqlParameter(nombre, valor);
-            param.DbType = DbType.Single; return param;
+            param.DbType = DbType.Single; 
+            return param;
         }
 
+        internal SqlParameter CrearParametro(string nombre, DateTime fecha)
+        {
+            SqlParameter param = new SqlParameter(nombre, fecha);
+            param.DbType = DbType.DateTime; 
+            return param;
+        }
 
     }
 

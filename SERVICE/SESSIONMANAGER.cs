@@ -10,9 +10,9 @@ namespace SERVICE
 {
     public class SESSIONMANAGER
     {
-        USUARIO usuario;
+        public USUARIO usuario;
         private static SESSIONMANAGER instancia;       
-        private int contadorIntentosFallidos; //hacer!!!!!
+        private int contadorIntentosFallidos; //hacer!!!!! o no.
         public SESSIONMANAGER() { }
 
         public static SESSIONMANAGER ObtenerInstancia()
