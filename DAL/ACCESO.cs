@@ -14,8 +14,8 @@ namespace DAL
         SqlConnection conexion;
 
         public void Abrir()
-        {
-            conexion = new SqlConnection(@"Integrated Security = SSPI; Initial Catalog= MECAGEST; Data Source = localhost\SQLEXPRESS");
+        {                                                                                       //Data Source = .
+            conexion = new SqlConnection(@"Integrated Security = SSPI; Initial Catalog= MECAGEST; Data Source = localhost\SQLEXPRESS"); 
             conexion.Open();
         }
 
