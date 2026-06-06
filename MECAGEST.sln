@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37216.2 d17.14
+VisualStudioVersion = 17.14.37216.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{3B8C31F4-EBD5-4D95-8305-0F1AB4B2A732}"
 EndProject
@@ -12,6 +12,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{281F2876-BE4C-4FCC-991F-87A90F8C4EAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SERVICE", "SERVICE\SERVICE.csproj", "{F19A3A63-B00E-4426-9F3B-BAB0C70326F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptBD", "ScriptBD", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		scriptBDparaEntrega.txt = scriptBDparaEntrega.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{839A3465-9DD7-4B35-86F2-ABFA2C0D7233}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\MECAGEST-logo.png = ..\..\..\MECAGEST-logo.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

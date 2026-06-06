@@ -12,7 +12,6 @@ namespace DAL
     public class MP_BITACORA : MAPPER<BE.BITACORA>
     {
         public ACCESO acceso = new ACCESO();
-
         
         public override void Insertar(BITACORA obj)
         {

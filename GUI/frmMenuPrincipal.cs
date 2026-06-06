@@ -21,7 +21,9 @@ namespace GUI
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
-            lblTSSUsuarioActual.Text = "Usuario: " + SERVICE.SESSIONMANAGER.ObtenerInstancia().usuario.ToString();
+            tsslblUsuarioActual.Text = "Usuario: " + SERVICE.SESSIONMANAGER.ObtenerInstancia().usuario.ToString();
+            tsslblFecha_Hora.Text = " - Fecha: " + DateTime.Today.ToString("dd/MM/yyyy");
+
         }
 
         private void gestiónPermisosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,6 +97,14 @@ namespace GUI
             frmBitacora frm = new frmBitacora();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void menúToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren.ToList())
+            {
+                frm.Close();
+            }
         }
     }
 }

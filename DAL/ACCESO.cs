@@ -83,8 +83,7 @@ namespace DAL
             param.DbType = DbType.Single; 
             return param;
         }
-
-        internal SqlParameter CrearParametro(string nombre, DateTime fecha)
+        public SqlParameter CrearParametro(string nombre, DateTime fecha)
         {
             SqlParameter param = new SqlParameter(nombre, fecha);
             param.DbType = DbType.DateTime; 

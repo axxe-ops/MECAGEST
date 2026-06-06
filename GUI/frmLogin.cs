@@ -21,6 +21,7 @@ namespace GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txtContraseña.UseSystemPasswordChar = true; //contraseñatxt oculta predeterminadamente
             WindowState = FormWindowState.Maximized;
         }
         
@@ -42,9 +43,9 @@ namespace GUI
             if (exito)
             {
                 SERVICE.BITACORABLL.Registrar(                  
-                    "Inicio de sesión exitoso", //evento
-                    "El usuario ha ingresado al sistema desde la IP local.", //detalle
-                    1 // Criticidad Baja: evento rutinario
+                    "Inicio de sesión exitoso",                                 //evento
+                    "El usuario ha ingresado al sistema desde la IP local.",    //detalle
+                    1                                                           // Criticidad Baja: evento rutinario
                 );
 
                 this.Hide();
@@ -60,8 +61,22 @@ namespace GUI
                 );
 
                 MessageBox.Show("Usuario o contraseña incorrectos.");
+            }            
+        }
+
+        private void btnMostrar_Ocultar_Click(object sender, EventArgs e)
+        {
+            // Si la contraseña está oculta (es true), la mostramos (false)
+            if (txtContraseña.UseSystemPasswordChar == true)
+            {
+                txtContraseña.UseSystemPasswordChar = false;                
             }
-            
+            else
+            {
+                // Si ya se ve, la volvemos a ocultar
+                txtContraseña.UseSystemPasswordChar = true;               
+
+            }
         }
     }
 }

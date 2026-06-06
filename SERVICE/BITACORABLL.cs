@@ -10,7 +10,7 @@ namespace SERVICE
     public class BITACORABLL
     {                
         DAL.MP_BITACORA mapperBitacora = new DAL.MP_BITACORA();
-        public static void  Registrar(string evento, string detalle, int criticidad)
+        public static void Registrar(string evento, string detalle, int criticidad)
         {
             DAL.MP_BITACORA mapperBitacora = new DAL.MP_BITACORA();
 

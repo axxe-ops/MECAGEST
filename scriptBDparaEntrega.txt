@@ -1,0 +1,331 @@
+USE [master]
+GO
+/****** Object:  Database [MECAGEST]    Script Date: 06/06/2026 0:06:14 ******/
+CREATE DATABASE [MECAGEST]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'MECAGEST', FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\MECAGEST.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'MECAGEST_log', FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\MECAGEST_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [MECAGEST] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [MECAGEST].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [MECAGEST] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [MECAGEST] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [MECAGEST] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [MECAGEST] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [MECAGEST] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [MECAGEST] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [MECAGEST] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [MECAGEST] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [MECAGEST] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [MECAGEST] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [MECAGEST] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [MECAGEST] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [MECAGEST] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [MECAGEST] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [MECAGEST] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [MECAGEST] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [MECAGEST] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [MECAGEST] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [MECAGEST] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [MECAGEST] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [MECAGEST] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [MECAGEST] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [MECAGEST] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [MECAGEST] SET  MULTI_USER 
+GO
+ALTER DATABASE [MECAGEST] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [MECAGEST] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [MECAGEST] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [MECAGEST] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [MECAGEST] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [MECAGEST] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [MECAGEST] SET QUERY_STORE = OFF
+GO
+USE [MECAGEST]
+GO
+/****** Object:  Table [dbo].[BITACORA]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BITACORA](
+	[id_bitacora] [int] IDENTITY(1,1) NOT NULL,
+	[usuario] [varchar](50) NOT NULL,
+	[fecha] [datetime] NOT NULL,
+	[evento] [varchar](100) NOT NULL,
+	[informacion] [varchar](500) NULL,
+	[criticidad] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_bitacora] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PERMISO]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PERMISO](
+	[id_permiso] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](100) NOT NULL,
+	[tipo] [varchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_permiso] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PERMISO_HIJO](
+	[id_padre] [int] NOT NULL,
+	[id_hijo] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_padre] ASC,
+	[id_hijo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[USUARIO]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[USUARIO](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
+	[contraseña] [varchar](255) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[USUARIO_PERMISO](
+	[id_usuario] [int] NOT NULL,
+	[id_permiso] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_usuario] ASC,
+	[id_permiso] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[BITACORA] ON 
+
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1, N'axel', CAST(N'2026-06-05T02:28:12.970' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (2, N'AXEL', CAST(N'2026-06-05T02:39:10.060' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (3, N'axel', CAST(N'2026-06-05T02:40:16.603' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (4, N'INVITADO', CAST(N'2026-06-05T02:42:21.727' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (5, N'axel', CAST(N'2026-06-05T02:42:26.193' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (6, N'INVITADO', CAST(N'2026-06-05T02:42:44.747' AS DateTime), N'Cierre de sesión', N'El usuario ha finalizado su sesión de trabajo correctamente.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (7, N'INVITADO', CAST(N'2026-06-05T02:42:51.990' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (8, N'INVITADO', CAST(N'2026-06-05T02:42:59.247' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (9, N'lauti', CAST(N'2026-06-05T02:43:02.313' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (10, N'INVITADO', CAST(N'2026-06-05T02:48:00.500' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (11, N'axel', CAST(N'2026-06-05T02:48:06.147' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (12, N'axel', CAST(N'2026-06-05T02:48:08.697' AS DateTime), N'Cierre de sesión', N'El usuario ha finalizado su sesión de trabajo correctamente.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (13, N'axel', CAST(N'2026-06-05T02:48:12.147' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (14, N'axel', CAST(N'2026-06-05T02:48:41.780' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (15, N'INVITADO', CAST(N'2026-06-05T02:48:52.770' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (16, N'lauti', CAST(N'2026-06-05T02:48:56.760' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (17, N'axel', CAST(N'2026-06-05T02:53:29.057' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (18, N'AXEL', CAST(N'2026-06-05T20:54:22.387' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (19, N'AXEL', CAST(N'2026-06-05T20:54:58.567' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (20, N'axel', CAST(N'2026-06-05T21:28:03.463' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (21, N'axel', CAST(N'2026-06-05T21:43:36.960' AS DateTime), N'Cierre de sesión', N'El usuario ha finalizado su sesión de trabajo correctamente.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (22, N'axel', CAST(N'2026-06-05T23:39:47.363' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (23, N'axel', CAST(N'2026-06-05T23:40:19.603' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (24, N'axel', CAST(N'2026-06-05T23:40:28.107' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (25, N'axel', CAST(N'2026-06-05T23:43:04.447' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (26, N'axel', CAST(N'2026-06-05T23:43:59.353' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (27, N'axel', CAST(N'2026-06-05T23:45:28.713' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (28, N'axel', CAST(N'2026-06-05T23:46:23.597' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (29, N'axel', CAST(N'2026-06-05T23:47:06.110' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (30, N'axel', CAST(N'2026-06-05T23:47:37.390' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (31, N'axel', CAST(N'2026-06-05T23:48:58.223' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+SET IDENTITY_INSERT [dbo].[BITACORA] OFF
+GO
+SET IDENTITY_INSERT [dbo].[PERMISO] ON 
+
+INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (1, N'Administrador', N'COMPUESTO')
+INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (2, N'Vendedor', N'COMPUESTO')
+INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (3, N'Alta de Usuario', N'SIMPLE')
+SET IDENTITY_INSERT [dbo].[PERMISO] OFF
+GO
+INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 2)
+INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (2, 3)
+GO
+SET IDENTITY_INSERT [dbo].[USUARIO] ON 
+
+INSERT [dbo].[USUARIO] ([id], [nombre], [contraseña]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4')
+INSERT [dbo].[USUARIO] ([id], [nombre], [contraseña]) VALUES (2, N'lauti', N'40510175845988F13F6162ED8526F0B09F73384467FA855E1E79B44A56562A58')
+SET IDENTITY_INSERT [dbo].[USUARIO] OFF
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 06/06/2026 0:06:14 ******/
+ALTER TABLE [dbo].[USUARIO] ADD UNIQUE NONCLUSTERED 
+(
+	[nombre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[PERMISO_HIJO]  WITH CHECK ADD FOREIGN KEY([id_hijo])
+REFERENCES [dbo].[PERMISO] ([id_permiso])
+GO
+ALTER TABLE [dbo].[PERMISO_HIJO]  WITH CHECK ADD FOREIGN KEY([id_padre])
+REFERENCES [dbo].[PERMISO] ([id_permiso])
+GO
+ALTER TABLE [dbo].[USUARIO_PERMISO]  WITH CHECK ADD FOREIGN KEY([id_permiso])
+REFERENCES [dbo].[PERMISO] ([id_permiso])
+GO
+ALTER TABLE [dbo].[USUARIO_PERMISO]  WITH CHECK ADD FOREIGN KEY([id_usuario])
+REFERENCES [dbo].[USUARIO] ([id])
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_ConsultarBitacora]
+    @desde DATETIME,
+    @hasta DATETIME,
+    @usuario VARCHAR(50) = NULL,
+    @criticidad INT = 0
+AS
+BEGIN
+    SELECT id_bitacora, usuario, fecha, evento, informacion, criticidad
+    FROM BITACORA
+    WHERE fecha >= @desde AND fecha <= @hasta
+	-- Filtra solo si NO es 'all' y NO está vacío
+      AND (@usuario = 'all' OR @usuario = '' OR usuario = @usuario)
+      -- Si @criticidad es 0, trae todos los niveles
+      AND (@criticidad = 0 OR criticidad = @criticidad)
+    ORDER BY fecha DESC;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GuardarRelacionPermisos]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_GuardarRelacionPermisos]
+    @id_padre INT,
+    @id_hijo INT
+AS
+BEGIN
+    INSERT INTO PERMISO_HIJO (id_padre, id_hijo) 
+    VALUES (@id_padre, @id_hijo)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_InsertarBitacora]
+    @usuario VARCHAR(50),
+    @fecha DATETIME,
+    @evento VARCHAR(100),
+    @informacion VARCHAR(500),
+    @criticidad INT
+AS
+BEGIN
+    INSERT INTO BITACORA (usuario, fecha, evento, informacion, criticidad)
+    VALUES (@usuario, @fecha, @evento, @informacion, @criticidad);
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_ObtenerHijosPorPadre]
+    @idPadre INT
+AS
+BEGIN
+    -- Nos aseguramos de traer el ID del hijo como 'id_permiso'
+    SELECT P.id_permiso, P.nombre, P.tipo
+    FROM PERMISO P
+    INNER JOIN PERMISO_HIJO PH ON P.id_permiso = PH.id_hijo
+    WHERE PH.id_padre = @idPadre
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_ObtenerTodosLosPermisos]
+AS
+BEGIN
+    SELECT id_permiso, nombre, tipo 
+    FROM PERMISO
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 06/06/2026 0:06:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_ValidarUsuario]
+    @nombre VARCHAR(50),
+    @contraseña VARCHAR(255)
+AS
+BEGIN
+    SELECT id, nombre, contraseña 
+    FROM USUARIO 
+    WHERE nombre = @nombre AND contraseña = @contraseña
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [MECAGEST] SET  READ_WRITE 
+GO
