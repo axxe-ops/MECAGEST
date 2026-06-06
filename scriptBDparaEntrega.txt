@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [MECAGEST]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Database [MECAGEST]    Script Date: 06/06/2026 0:35:16 ******/
 CREATE DATABASE [MECAGEST]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [MECAGEST] SET QUERY_STORE = OFF
 GO
 USE [MECAGEST]
 GO
-/****** Object:  Table [dbo].[BITACORA]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Table [dbo].[BITACORA]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PERMISO]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Table [dbo].[PERMISO]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +113,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -128,7 +128,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Table [dbo].[USUARIO]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -136,14 +136,14 @@ GO
 CREATE TABLE [dbo].[USUARIO](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](50) NOT NULL,
-	[contraseña] [varchar](255) NOT NULL,
+	[contrasena] [varchar](255) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -191,6 +191,8 @@ INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informaci
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (29, N'axel', CAST(N'2026-06-05T23:47:06.110' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (30, N'axel', CAST(N'2026-06-05T23:47:37.390' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (31, N'axel', CAST(N'2026-06-05T23:48:58.223' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (32, N'INVITADO', CAST(N'2026-06-06T00:34:18.090' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (33, N'axel', CAST(N'2026-06-06T00:34:26.800' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
 SET IDENTITY_INSERT [dbo].[BITACORA] OFF
 GO
 SET IDENTITY_INSERT [dbo].[PERMISO] ON 
@@ -205,13 +207,13 @@ INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (2, 3)
 GO
 SET IDENTITY_INSERT [dbo].[USUARIO] ON 
 
-INSERT [dbo].[USUARIO] ([id], [nombre], [contraseña]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4')
-INSERT [dbo].[USUARIO] ([id], [nombre], [contraseña]) VALUES (2, N'lauti', N'40510175845988F13F6162ED8526F0B09F73384467FA855E1E79B44A56562A58')
+INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4')
+INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena]) VALUES (2, N'lauti', N'40510175845988F13F6162ED8526F0B09F73384467FA855E1E79B44A56562A58')
 SET IDENTITY_INSERT [dbo].[USUARIO] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 06/06/2026 0:35:16 ******/
 ALTER TABLE [dbo].[USUARIO] ADD UNIQUE NONCLUSTERED 
 (
 	[nombre] ASC
@@ -229,7 +231,7 @@ GO
 ALTER TABLE [dbo].[USUARIO_PERMISO]  WITH CHECK ADD FOREIGN KEY([id_usuario])
 REFERENCES [dbo].[USUARIO] ([id])
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -251,7 +253,7 @@ BEGIN
     ORDER BY fecha DESC;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GuardarRelacionPermisos]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GuardarRelacionPermisos]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -265,7 +267,7 @@ BEGIN
     VALUES (@id_padre, @id_hijo)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -282,7 +284,7 @@ BEGIN
     VALUES (@usuario, @fecha, @evento, @informacion, @criticidad);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -298,7 +300,7 @@ BEGIN
     WHERE PH.id_padre = @idPadre
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -310,19 +312,19 @@ BEGIN
     FROM PERMISO
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 06/06/2026 0:06:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 06/06/2026 0:35:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[sp_ValidarUsuario]
     @nombre VARCHAR(50),
-    @contraseña VARCHAR(255)
+    @contrasena VARCHAR(255)
 AS
 BEGIN
-    SELECT id, nombre, contraseña 
+    SELECT id, nombre, contrasena 
     FROM USUARIO 
-    WHERE nombre = @nombre AND contraseña = @contraseña
+    WHERE nombre = @nombre AND contrasena = @contrasena
 END
 GO
 USE [master]

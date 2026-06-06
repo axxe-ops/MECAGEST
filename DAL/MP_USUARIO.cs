@@ -35,7 +35,7 @@ namespace DAL
         {            
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("nombre", usuario.Nombre));
-            parametros.Add(acceso.CrearParametro("contraseña", usuario.Contraseña));
+            parametros.Add(acceso.CrearParametro("contrasena", usuario.Contrasena));
 
             acceso.Abrir();
             DataTable dt = acceso.Leer("sp_ValidarUsuario", parametros);
@@ -46,7 +46,7 @@ namespace DAL
                 BE.USUARIO usuarioEncontrado = new BE.USUARIO();
                 usuarioEncontrado.Id = Convert.ToInt32(dt.Rows[0]["id"]);
                 usuarioEncontrado.Nombre = dt.Rows[0]["nombre"].ToString();
-                usuarioEncontrado.Contraseña = dt.Rows[0]["contraseña"].ToString();
+                usuarioEncontrado.Contrasena = dt.Rows[0]["contrasena"].ToString();
 
                 return usuarioEncontrado;
             }

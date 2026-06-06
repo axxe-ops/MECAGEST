@@ -22,11 +22,11 @@ namespace BE
 			set { nombre = value; }
 		}
 
-		private string contraseña;
-		public string Contraseña
+		private string contrasena;
+		public string Contrasena
 		{
-			get { return contraseña; }
-			set { contraseña = value; }
+			get { return contrasena; }
+			set { contrasena = value; }
 		}
 
 

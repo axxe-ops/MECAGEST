@@ -36,7 +36,7 @@ namespace GUI
             
             BE.USUARIO usuario = new BE.USUARIO();
             usuario.Nombre = txtNombre.Text;
-            usuario.Contraseña = txtContraseña.Text;
+            usuario.Contrasena = txtContraseña.Text;
 
             bool exito = SERVICE.SESSIONMANAGER.Login(usuario);
 

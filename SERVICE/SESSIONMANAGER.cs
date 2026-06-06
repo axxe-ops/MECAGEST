@@ -23,8 +23,8 @@ namespace SERVICE
         {
             BLL.USUARIO_BLL gestorUsuario = new BLL.USUARIO_BLL();
 
-            string contraseñaHasheada = ENCRIPTADO.Hashear(usu.Contraseña);
-            usu.Contraseña = contraseñaHasheada;
+            string contraseñaHasheada = ENCRIPTADO.Hashear(usu.Contrasena);
+            usu.Contrasena = contraseñaHasheada;
 
             BE.USUARIO usuarioLogueado = gestorUsuario.ValidarUsuario(usu);
 
