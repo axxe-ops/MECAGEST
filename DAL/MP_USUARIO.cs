@@ -11,7 +11,7 @@ namespace DAL
 {
     public class MP_USUARIO : MAPPER<BE.USUARIO>
     {
-        public override void Deletear(USUARIO obj)
+        public override void Eliminar(USUARIO obj)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +26,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public override void Updatear(USUARIO obj)
+        public override void Modificar(USUARIO obj)
         {
             throw new NotImplementedException();
         }

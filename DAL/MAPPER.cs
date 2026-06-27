@@ -11,9 +11,9 @@ namespace DAL
         public ACCESO acceso = new ACCESO();
         public abstract void Insertar(T obj);
 
-        public abstract void Updatear(T obj);
+        public abstract void Modificar(T obj);
 
-        public abstract void Deletear(T obj);
+        public abstract void Eliminar(T obj);
 
         public abstract List<T> Listar();
         

@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,38 +12,61 @@ namespace BLL
     {
         DAL.MP_PERMISO mapperPermiso = new DAL.MP_PERMISO();
 
-        //CHEQUEAR BIEN - ME DA PROBLEMAS!
+        public void AsignarHijo(COMPONENTE padreSeleccionado, COMPONENTE permisoNuevo)
+        {
+            if (!(padreSeleccionado is PermisoCompuesto))
+                throw new Exception("Solo se pueden asignar hijos a permisos compuestos (roles).");
 
-        //public void InicializarArbolPermisos()
-        //{
-        //    MP_PERMISO mapper = new MP_PERMISO();
+            mapperPermiso.AsignarHijo(padreSeleccionado, permisoNuevo);
+        }
 
-        //    // 1. Obtenemos las raíces (padres que no tienen nadie arriba)
-        //    List<BE.COMPONENTE> raices = mapper.ObtenerRaices();
+        public void CrearPermiso(BE.COMPONENTE c)
+        {
+            mapperPermiso.Insertar(c);
+        }
 
-        //    // 2. Cargamos recursivamente toda la estructura
-        //    foreach (var nodo in raices)
-        //    {
-        //        CargarHijosRecursivo(nodo, mapper);
-        //    }
-        //}
+        public void EliminarPermiso(BE.COMPONENTE c)
+        {
+            mapperPermiso.Eliminar(c);
+        }
 
-        //private void CargarHijosRecursivo(BE.COMPONENTE componente, MP_PERMISO mapper)
-        //{
-        //    // Solo si es compuesto puede tener hijos
-        //    if (componente is BE.PermisoCompuesto compuesto)
-        //    {
-        //        List<BE.COMPONENTE> hijos = mapper.ObtenerHijos(compuesto);
+        public List<BE.COMPONENTE> ObtenerPermisosUsuario(BE.USUARIO usuario)
+        {   
+            
+            return mapperPermiso.ObtenerPermisosUsuario(usuario);
+        }
 
-        //        foreach (var hijo in hijos)
-        //        {
-        //            compuesto.Agregar(hijo); // Patrón Composite: agregamos el componente
+        // Método necesario para completar el árbol recursivamente
+        public void LlenarHijos(COMPONENTE padre)
+        {
+            // Aquí llamarías a tu DAL para buscar los hijos de un padre específico
+            // SELECT id_hijo FROM PERMISO_HIJO WHERE id_padre = padre.Id
+            var hijos = mapperPermiso.ObtenerHijos(padre.Id);
+            foreach (var hijo in hijos)
+            {
+                padre.Agregar(hijo);
+                LlenarHijos(hijo); // Recursión para niveles profundos
+            }
+        }
 
-        //            // Recursividad: si el hijo también es compuesto, sigue bajando
-        //            CargarHijosRecursivo(hijo, mapper);
-        //        }
-        //    }
-        //}
+        public List<COMPONENTE> ObtenerTodosLosPermisos()
+        {
+            return mapperPermiso.ObtenerTodosLosPermisos();
+        }
 
+        public List<COMPONENTE> ObtenerPermisosDeUsuario(USUARIO usuarioSeleccionado)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AsignarPermisoAUsuario(USUARIO usuario, COMPONENTE permisoSeleccionado)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<COMPONENTE> ObtenerRaicesDelUsuario(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

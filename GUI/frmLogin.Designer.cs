@@ -31,19 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelInicioSesion = new System.Windows.Forms.Panel();
-            this.lblResultado = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.btnMostrar_Ocultar = new System.Windows.Forms.Button();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
-            this.btnMostrar_Ocultar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelInicioSesion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -79,13 +79,13 @@
             this.panelInicioSesion.Size = new System.Drawing.Size(388, 385);
             this.panelInicioSesion.TabIndex = 2;
             // 
-            // lblResultado
+            // panel1
             // 
-            this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(85, 298);
-            this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(0, 13);
-            this.lblResultado.TabIndex = 12;
+            this.panel1.Controls.Add(this.pictureBoxLogo);
+            this.panel1.Location = new System.Drawing.Point(41, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(308, 202);
+            this.panel1.TabIndex = 14;
             // 
             // pictureBoxLogo
             // 
@@ -98,6 +98,24 @@
             this.pictureBoxLogo.TabIndex = 11;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // btnMostrar_Ocultar
+            // 
+            this.btnMostrar_Ocultar.Location = new System.Drawing.Point(324, 263);
+            this.btnMostrar_Ocultar.Name = "btnMostrar_Ocultar";
+            this.btnMostrar_Ocultar.Size = new System.Drawing.Size(25, 23);
+            this.btnMostrar_Ocultar.TabIndex = 13;
+            this.btnMostrar_Ocultar.Text = "👁️";
+            this.btnMostrar_Ocultar.UseVisualStyleBackColor = true;
+            this.btnMostrar_Ocultar.Click += new System.EventHandler(this.btnMostrar_Ocultar_Click);
+            // 
+            // lblResultado
+            // 
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(85, 298);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(0, 13);
+            this.lblResultado.TabIndex = 12;
+            // 
             // txtContraseña
             // 
             this.txtContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -105,7 +123,7 @@
             this.txtContraseña.Location = new System.Drawing.Point(105, 265);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(213, 20);
-            this.txtContraseña.TabIndex = 10;
+            this.txtContraseña.TabIndex = 2;
             // 
             // btnIniciarSesion
             // 
@@ -113,7 +131,7 @@
             this.btnIniciarSesion.Location = new System.Drawing.Point(41, 314);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(308, 46);
-            this.btnIniciarSesion.TabIndex = 8;
+            this.btnIniciarSesion.TabIndex = 3;
             this.btnIniciarSesion.Text = "Iniciar Sesion";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
             this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click_1);
@@ -125,7 +143,7 @@
             this.txtNombre.Location = new System.Drawing.Point(105, 234);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(244, 20);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 1;
             // 
             // lblNombre
             // 
@@ -149,24 +167,6 @@
             this.lblContraseña.TabIndex = 7;
             this.lblContraseña.Text = "Contraseña";
             // 
-            // btnMostrar_Ocultar
-            // 
-            this.btnMostrar_Ocultar.Location = new System.Drawing.Point(324, 263);
-            this.btnMostrar_Ocultar.Name = "btnMostrar_Ocultar";
-            this.btnMostrar_Ocultar.Size = new System.Drawing.Size(25, 23);
-            this.btnMostrar_Ocultar.TabIndex = 13;
-            this.btnMostrar_Ocultar.Text = "👁️";
-            this.btnMostrar_Ocultar.UseVisualStyleBackColor = true;
-            this.btnMostrar_Ocultar.Click += new System.EventHandler(this.btnMostrar_Ocultar_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pictureBoxLogo);
-            this.panel1.Location = new System.Drawing.Point(41, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(308, 202);
-            this.panel1.TabIndex = 14;
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,8 +179,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelInicioSesion.ResumeLayout(false);
             this.panelInicioSesion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

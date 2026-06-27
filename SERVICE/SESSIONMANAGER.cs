@@ -13,7 +13,7 @@ namespace SERVICE
         public USUARIO usuario;
         private static SESSIONMANAGER instancia;
         
-        public SESSIONMANAGER() { }
+        private SESSIONMANAGER() { }
 
         public static SESSIONMANAGER ObtenerInstancia()
         {
@@ -33,7 +33,11 @@ namespace SERVICE
                 if (instancia == null)
                 {                    
                     instancia = new SESSIONMANAGER();
-                    instancia.usuario = usu;
+                    instancia.usuario = usuarioLogueado;
+
+                    BLL.PERMISO_BLL gestorPermisos = new BLL.PERMISO_BLL();
+                    instancia.usuario.Permisos = gestorPermisos.ObtenerPermisosUsuario(usuarioLogueado);
+
                     return true;
                 }
                 else

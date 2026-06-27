@@ -8,13 +8,12 @@ namespace BE
     public class PermisoCompuesto : COMPONENTE
     {
         public List<COMPONENTE> listaPermisosHijos = new List<COMPONENTE>();
-
         public override void Agregar(COMPONENTE componente)
         {
             listaPermisosHijos.Add(componente);
         }
 
-        public override List<COMPONENTE> ObtenerPermisos()
+        public override List<COMPONENTE> ObtenerHijos()
         {
             return listaPermisosHijos;
         }

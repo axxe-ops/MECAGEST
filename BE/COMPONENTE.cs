@@ -24,6 +24,7 @@ namespace BE
 
         public abstract void Agregar(COMPONENTE componente);
         public abstract void Remover(COMPONENTE componente);
-        public abstract List<COMPONENTE> ObtenerPermisos();
+        public abstract List<COMPONENTE> ObtenerHijos();
+                
 	}
 }

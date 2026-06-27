@@ -12,9 +12,9 @@ namespace BE
             throw new NotImplementedException();
         }
 
-        public override List<COMPONENTE> ObtenerPermisos()
+        public override List<COMPONENTE> ObtenerHijos()
         {
-            throw new NotImplementedException();
+            return new List<COMPONENTE>();
         }
 
         public override void Remover(COMPONENTE componente)

@@ -29,13 +29,19 @@ namespace BE
 			set { contrasena = value; }
 		}
 
+		private List<COMPONENTE> permisos;
+		public List<COMPONENTE> Permisos
+		{
+			get { return permisos; }
+			set { permisos = value; }
+		}
 
-        public override string ToString()
+
+
+		public override string ToString()
         {
             return $"{nombre}";
         }
-
-
 
 	}
 }

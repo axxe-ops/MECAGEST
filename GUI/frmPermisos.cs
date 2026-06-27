@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,47 +25,175 @@ namespace GUI
         private void frmPermisos_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
-            //List<BE.COMPONENTE> listaPermisos = gestorPermisos.ObtenerTodoElArbol();
-            //CargarTreeView(listaPermisos);
+
+            ComboBoxConfiguracion();
+
+            CargarArbol();
         }
 
-        // 1. Llamas a esto para iniciar el proceso
-        public void CargarTreeView(List<BE.COMPONENTE> lista)
+
+        private void CargarArbol()
         {
             tvPermisos.Nodes.Clear();
 
-            foreach (var comp in lista)
-            {
-                TreeNode nodo = new TreeNode(comp.Nombre);
-                nodo.Tag = comp;                            // IMPORTANTE: Guardamos el objeto BE aquí
-                tvPermisos.Nodes.Add(nodo);
+            List<COMPONENTE> listaCompleta = gestorPermisos.ObtenerTodosLosPermisos();
 
-                // 2. Si es compuesto, llamamos recursivamente a la función
-                if (comp is BE.PermisoCompuesto compuesto)
+            foreach (var p in listaCompleta)
+            {
+                // Si NO es hijo de nadie, entonces es una raíz y lo dibujamos
+                if (EsHijo(p.Id, listaCompleta) == false)
                 {
-                    CargarNodosRecursivos(nodo, compuesto.ObtenerPermisos());
+                    TreeNode nodo = tvPermisos.Nodes.Add(p.Id.ToString(), p.Nombre);
+                    nodo.Tag = p;
+                                        
+                    LlenarNodosRecursivo(nodo, p);
                 }
             }
+
+            tvPermisos.ExpandAll();
         }
 
-
-        // 3. Esta es la función recursiva que recorre el árbol
-        private void CargarNodosRecursivos(TreeNode nodoPadre, List<BE.COMPONENTE> listaHijos)
+        private void LlenarNodosRecursivo(TreeNode nodoPadre, COMPONENTE componente)
         {
-            foreach (var hijo in listaHijos)
+            if (componente is PermisoCompuesto compuesto)
             {
-                TreeNode nodoHijo = new TreeNode(hijo.Nombre);
-                nodoHijo.Tag = hijo;
-                nodoPadre.Nodes.Add(nodoHijo);
-
-                // Si el hijo también es compuesto, seguimos bajando
-                if (hijo is BE.PermisoCompuesto compuesto)
+                foreach (var hijo in compuesto.ObtenerHijos())
                 {
-                    CargarNodosRecursivos(nodoHijo, compuesto.ObtenerPermisos());
+                    TreeNode nodoHijo = nodoPadre.Nodes.Add(hijo.Id.ToString(), hijo.Nombre);
+                    nodoHijo.Tag = hijo;
+                    LlenarNodosRecursivo(nodoHijo, hijo);
                 }
             }
         }
 
+        private bool EsHijo(int id, List<COMPONENTE> todos)
+        {
+            foreach (var permiso in todos)            {
+                
+                if (permiso is PermisoCompuesto)
+                {
+                    PermisoCompuesto compuesto = (PermisoCompuesto)permiso;
 
+                    foreach (var hijo in compuesto.ObtenerHijos())
+                    {
+                        if (hijo.Id == id)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        private void btnCrearPermiso_Click(object sender, EventArgs e)
+        {
+
+            BE.COMPONENTE permisoNuevo;
+
+            string nombre = txtNombrePermiso.Text;
+            string tipo = cmbTipoPermiso.SelectedItem.ToString();
+
+            if (tipo == "COMPUESTO")
+            {
+                permisoNuevo = new BE.PermisoCompuesto();
+            }
+            else
+            {
+                permisoNuevo = new PermisoSimple();
+            }
+
+            permisoNuevo.Nombre = nombre;
+
+            gestorPermisos.CrearPermiso(permisoNuevo);
+
+            if (tvPermisos.SelectedNode != null)
+            {
+                BE.COMPONENTE padreSeleccionado = (BE.COMPONENTE)tvPermisos.SelectedNode.Tag;
+
+                if (padreSeleccionado is BE.PermisoCompuesto)
+                {
+                    gestorPermisos.AsignarHijo(padreSeleccionado, permisoNuevo);
+                }
+                else
+                {
+                    MessageBox.Show("El permiso seleccionado no es un contenedor (Rol). El nuevo permiso se creó de forma independiente.");
+                }
+            }
+
+            CargarArbol();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (tvPermisos.SelectedNode == null) return;
+
+            COMPONENTE permisoSeleccionado = (COMPONENTE)tvPermisos.SelectedNode.Tag;
+
+            var confirm = MessageBox.Show("¿Está seguro de eliminar este permiso? Se borrarán sus relaciones.",
+                                          "Confirmar", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+            {                
+                gestorPermisos.EliminarPermiso(permisoSeleccionado);
+                
+                CargarArbol();
+            }
+        }
+
+        private void ComboBoxConfiguracion()
+        {
+            cmbTipoPermiso.Items.Clear();
+            cmbTipoPermiso.Items.Add("SIMPLE");
+            cmbTipoPermiso.Items.Add("COMPUESTO");
+            
+            cmbTipoPermiso.SelectedIndex = 0;
+            
+            cmbTipoPermiso.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void cmbUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //BE.USUARIO usuarioSeleccionado = (BE.USUARIO)cmbUsuarios.SelectedItem;
+
+            //CargarArbol();
+
+            //List<COMPONENTE> asignados = gestorPermisos.ObtenerPermisosDeUsuario(usuarioSeleccionado);
+
+            
+            ////lstPermisosAsignados.DataSource = asignados;
+            ////lstPermisosAsignados.DisplayMember = "Nombre";
+        }
+
+        private void btnAsignarPermisoAUsuario_Click(object sender, EventArgs e)
+        {
+            //if (tvPermisos.SelectedNode == null) return;
+
+            //BE.USUARIO usuario = (BE.USUARIO)cmbUsuarios.SelectedItem;
+            //COMPONENTE permisoSeleccionado = (COMPONENTE)tvPermisos.SelectedNode.Tag;
+
+            
+            //gestorPermisos.AsignarPermisoAUsuario(usuario, permisoSeleccionado);
+
+            //// Refrescamos la lista de la derecha
+            //ActualizarTreeViewAsignados(usuario);
+        }
+
+        private void ActualizarTreeViewAsignados(BE.USUARIO usuario)
+        {
+            //tvPermisosAUsuarios.Nodes.Clear();
+
+            
+            //List<COMPONENTE> raicesAsignadas = gestorPermisos.ObtenerRaicesDelUsuario(usuario.Id);
+
+            //foreach (var p in raicesAsignadas)
+            //{
+            //    TreeNode nodo = tvPermisosAUsuarios.Nodes.Add(p.Id.ToString(), p.Nombre);
+            //    nodo.Tag = p;
+
+            //    // 2. Usamos la misma recursión para dibujar sus hijos
+            //    LlenarNodosRecursivo(nodo, p);
+            //}
+
+            //tvPermisosAUsuarios.ExpandAll();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace DAL
     public class MP_BITACORA : MAPPER<BE.BITACORA>
     {
         public ACCESO acceso = new ACCESO();
-        
+
         public override void Insertar(BITACORA obj)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
@@ -28,15 +28,7 @@ namespace DAL
 
         }
 
-        public override void Updatear(BITACORA obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Deletear(BITACORA obj)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<BE.BITACORA> Listar(DateTime desde, DateTime hasta, string usuario, int criticidad)
         {
@@ -69,6 +61,16 @@ namespace DAL
         }
 
         public override List<BITACORA> Listar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Modificar(BITACORA obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Eliminar(BITACORA obj)
         {
             throw new NotImplementedException();
         }
