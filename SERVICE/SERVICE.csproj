@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BITACORABLL.cs" />
     <Compile Include="ENCRIPTADO.cs" />
+    <Compile Include="SEGURIDAD.cs" />
     <Compile Include="SESSIONMANAGER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tvPermisos = new System.Windows.Forms.TreeView();
+            this.tvPermisosEstructurados = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCrearPermiso = new System.Windows.Forms.Button();
+            this.btnCrearRol = new System.Windows.Forms.Button();
             this.txtNombrePermiso = new System.Windows.Forms.TextBox();
             this.lblNombrePermiso = new System.Windows.Forms.Label();
-            this.lblTipoPermiso = new System.Windows.Forms.Label();
-            this.cmbTipoPermiso = new System.Windows.Forms.ComboBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.tvPermisosAUsuarios = new System.Windows.Forms.TreeView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnEliminarRol = new System.Windows.Forms.Button();
+            this.tvPermisosSinEstructurar = new System.Windows.Forms.TreeView();
+            this.lblPermisosCatalogo = new System.Windows.Forms.Label();
             this.btnAsignarPermisoAUsuario = new System.Windows.Forms.Button();
-            this.cmbUsuarios = new System.Windows.Forms.ComboBox();
+            this.lblActualizarPermisosEstructurados = new System.Windows.Forms.Button();
+            this.btnActualizarPermisosSinEstructurar = new System.Windows.Forms.Button();
+            this.lblFlecha = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tvPermisos
+            // tvPermisosEstructurados
             // 
-            this.tvPermisos.Location = new System.Drawing.Point(3, 3);
-            this.tvPermisos.Name = "tvPermisos";
-            this.tvPermisos.Size = new System.Drawing.Size(293, 395);
-            this.tvPermisos.TabIndex = 0;
+            this.tvPermisosEstructurados.Location = new System.Drawing.Point(3, 3);
+            this.tvPermisosEstructurados.Name = "tvPermisosEstructurados";
+            this.tvPermisosEstructurados.Size = new System.Drawing.Size(293, 395);
+            this.tvPermisosEstructurados.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tvPermisos);
+            this.panel1.Controls.Add(this.tvPermisosEstructurados);
             this.panel1.Location = new System.Drawing.Point(251, 15);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(299, 401);
             this.panel1.TabIndex = 1;
             // 
-            // btnCrearPermiso
+            // btnCrearRol
             // 
-            this.btnCrearPermiso.Location = new System.Drawing.Point(56, 85);
-            this.btnCrearPermiso.Name = "btnCrearPermiso";
-            this.btnCrearPermiso.Size = new System.Drawing.Size(189, 53);
-            this.btnCrearPermiso.TabIndex = 2;
-            this.btnCrearPermiso.Text = "Crear Permiso";
-            this.btnCrearPermiso.UseVisualStyleBackColor = true;
-            this.btnCrearPermiso.Click += new System.EventHandler(this.btnCrearPermiso_Click);
+            this.btnCrearRol.Location = new System.Drawing.Point(56, 41);
+            this.btnCrearRol.Name = "btnCrearRol";
+            this.btnCrearRol.Size = new System.Drawing.Size(189, 53);
+            this.btnCrearRol.TabIndex = 2;
+            this.btnCrearRol.Text = "Crear Rol";
+            this.btnCrearRol.UseVisualStyleBackColor = true;
+            this.btnCrearRol.Click += new System.EventHandler(this.btnCrearPermiso_Click);
             // 
             // txtNombrePermiso
             // 
@@ -84,83 +84,86 @@
             this.lblNombrePermiso.TabIndex = 4;
             this.lblNombrePermiso.Text = "Nombre";
             // 
-            // lblTipoPermiso
+            // btnEliminarRol
             // 
-            this.lblTipoPermiso.AutoSize = true;
-            this.lblTipoPermiso.Location = new System.Drawing.Point(22, 47);
-            this.lblTipoPermiso.Name = "lblTipoPermiso";
-            this.lblTipoPermiso.Size = new System.Drawing.Size(28, 13);
-            this.lblTipoPermiso.TabIndex = 4;
-            this.lblTipoPermiso.Text = "Tipo";
+            this.btnEliminarRol.Location = new System.Drawing.Point(56, 363);
+            this.btnEliminarRol.Name = "btnEliminarRol";
+            this.btnEliminarRol.Size = new System.Drawing.Size(189, 53);
+            this.btnEliminarRol.TabIndex = 6;
+            this.btnEliminarRol.Text = "Eliminar Rol";
+            this.btnEliminarRol.UseVisualStyleBackColor = true;
+            this.btnEliminarRol.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // cmbTipoPermiso
+            // tvPermisosSinEstructurar
             // 
-            this.cmbTipoPermiso.FormattingEnabled = true;
-            this.cmbTipoPermiso.Location = new System.Drawing.Point(56, 44);
-            this.cmbTipoPermiso.Name = "cmbTipoPermiso";
-            this.cmbTipoPermiso.Size = new System.Drawing.Size(189, 21);
-            this.cmbTipoPermiso.TabIndex = 5;
+            this.tvPermisosSinEstructurar.Location = new System.Drawing.Point(766, 41);
+            this.tvPermisosSinEstructurar.Name = "tvPermisosSinEstructurar";
+            this.tvPermisosSinEstructurar.Size = new System.Drawing.Size(247, 375);
+            this.tvPermisosSinEstructurar.TabIndex = 7;
             // 
-            // btnEliminar
+            // lblPermisosCatalogo
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(100, 363);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(145, 53);
-            this.btnEliminar.TabIndex = 6;
-            this.btnEliminar.Text = "Eliminar Permiso";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // tvPermisosAUsuarios
-            // 
-            this.tvPermisosAUsuarios.Location = new System.Drawing.Point(766, 41);
-            this.tvPermisosAUsuarios.Name = "tvPermisosAUsuarios";
-            this.tvPermisosAUsuarios.Size = new System.Drawing.Size(247, 372);
-            this.tvPermisosAUsuarios.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(766, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Permisos asignados a Usuarios";
+            this.lblPermisosCatalogo.AutoSize = true;
+            this.lblPermisosCatalogo.Location = new System.Drawing.Point(766, 22);
+            this.lblPermisosCatalogo.Name = "lblPermisosCatalogo";
+            this.lblPermisosCatalogo.Size = new System.Drawing.Size(109, 13);
+            this.lblPermisosCatalogo.TabIndex = 8;
+            this.lblPermisosCatalogo.Text = "Catalogo de Permisos";
             // 
             // btnAsignarPermisoAUsuario
             // 
-            this.btnAsignarPermisoAUsuario.Location = new System.Drawing.Point(570, 362);
+            this.btnAsignarPermisoAUsuario.Location = new System.Drawing.Point(556, 211);
             this.btnAsignarPermisoAUsuario.Name = "btnAsignarPermisoAUsuario";
-            this.btnAsignarPermisoAUsuario.Size = new System.Drawing.Size(180, 51);
+            this.btnAsignarPermisoAUsuario.Size = new System.Drawing.Size(204, 51);
             this.btnAsignarPermisoAUsuario.TabIndex = 9;
-            this.btnAsignarPermisoAUsuario.Text = "Asignar Permiso a Usuario";
+            this.btnAsignarPermisoAUsuario.Text = "Asignar Permiso";
             this.btnAsignarPermisoAUsuario.UseVisualStyleBackColor = true;
             this.btnAsignarPermisoAUsuario.Click += new System.EventHandler(this.btnAsignarPermisoAUsuario_Click);
             // 
-            // cmbUsuarios
+            // lblActualizarPermisosEstructurados
             // 
-            this.cmbUsuarios.FormattingEnabled = true;
-            this.cmbUsuarios.Location = new System.Drawing.Point(570, 102);
-            this.cmbUsuarios.Name = "cmbUsuarios";
-            this.cmbUsuarios.Size = new System.Drawing.Size(180, 21);
-            this.cmbUsuarios.TabIndex = 10;
-            this.cmbUsuarios.SelectedIndexChanged += new System.EventHandler(this.cmbUsuarios_SelectedIndexChanged);
+            this.lblActualizarPermisosEstructurados.Location = new System.Drawing.Point(472, 419);
+            this.lblActualizarPermisosEstructurados.Name = "lblActualizarPermisosEstructurados";
+            this.lblActualizarPermisosEstructurados.Size = new System.Drawing.Size(75, 23);
+            this.lblActualizarPermisosEstructurados.TabIndex = 10;
+            this.lblActualizarPermisosEstructurados.Text = "Actualizar";
+            this.lblActualizarPermisosEstructurados.UseVisualStyleBackColor = true;
+            this.lblActualizarPermisosEstructurados.Click += new System.EventHandler(this.lblActualizarPermisosEstructurados_Click);
+            // 
+            // btnActualizarPermisosSinEstructurar
+            // 
+            this.btnActualizarPermisosSinEstructurar.Location = new System.Drawing.Point(938, 419);
+            this.btnActualizarPermisosSinEstructurar.Name = "btnActualizarPermisosSinEstructurar";
+            this.btnActualizarPermisosSinEstructurar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizarPermisosSinEstructurar.TabIndex = 10;
+            this.btnActualizarPermisosSinEstructurar.Text = "Actualizar";
+            this.btnActualizarPermisosSinEstructurar.UseVisualStyleBackColor = true;
+            this.btnActualizarPermisosSinEstructurar.Click += new System.EventHandler(this.btnActualizarPermisosSinEstructurar_Click);
+            // 
+            // lblFlecha
+            // 
+            this.lblFlecha.AutoSize = true;
+            this.lblFlecha.Location = new System.Drawing.Point(629, 195);
+            this.lblFlecha.Name = "lblFlecha";
+            this.lblFlecha.Size = new System.Drawing.Size(67, 13);
+            this.lblFlecha.TabIndex = 11;
+            this.lblFlecha.Text = "<------------------";
             // 
             // frmPermisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 518);
-            this.Controls.Add(this.cmbUsuarios);
+            this.Controls.Add(this.lblFlecha);
+            this.Controls.Add(this.btnActualizarPermisosSinEstructurar);
+            this.Controls.Add(this.lblActualizarPermisosEstructurados);
             this.Controls.Add(this.btnAsignarPermisoAUsuario);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tvPermisosAUsuarios);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.cmbTipoPermiso);
-            this.Controls.Add(this.lblTipoPermiso);
+            this.Controls.Add(this.lblPermisosCatalogo);
+            this.Controls.Add(this.tvPermisosSinEstructurar);
+            this.Controls.Add(this.btnEliminarRol);
             this.Controls.Add(this.lblNombrePermiso);
             this.Controls.Add(this.txtNombrePermiso);
-            this.Controls.Add(this.btnCrearPermiso);
+            this.Controls.Add(this.btnCrearRol);
             this.Controls.Add(this.panel1);
             this.Name = "frmPermisos";
             this.Text = "frmPermisos";
@@ -173,17 +176,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView tvPermisos;
+        private System.Windows.Forms.TreeView tvPermisosEstructurados;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCrearPermiso;
+        private System.Windows.Forms.Button btnCrearRol;
         private System.Windows.Forms.TextBox txtNombrePermiso;
         private System.Windows.Forms.Label lblNombrePermiso;
-        private System.Windows.Forms.Label lblTipoPermiso;
-        private System.Windows.Forms.ComboBox cmbTipoPermiso;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.TreeView tvPermisosAUsuarios;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEliminarRol;
+        private System.Windows.Forms.TreeView tvPermisosSinEstructurar;
+        private System.Windows.Forms.Label lblPermisosCatalogo;
         private System.Windows.Forms.Button btnAsignarPermisoAUsuario;
-        private System.Windows.Forms.ComboBox cmbUsuarios;
+        private System.Windows.Forms.Button lblActualizarPermisosEstructurados;
+        private System.Windows.Forms.Button btnActualizarPermisosSinEstructurar;
+        private System.Windows.Forms.Label lblFlecha;
     }
 }

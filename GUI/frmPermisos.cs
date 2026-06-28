@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using SERVICE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace GUI
     public partial class frmPermisos : Form
     {
         public BLL.PERMISO_BLL gestorPermisos = new BLL.PERMISO_BLL();
+        public BLL.USUARIO_BLL gestorUsuarios = new USUARIO_BLL();
 
         public frmPermisos()
         {
@@ -26,33 +28,53 @@ namespace GUI
         {
             WindowState = FormWindowState.Maximized;
 
-            ComboBoxConfiguracion();
-
-            CargarArbol();
+            CargarArbol();                  //carga Arbol de permisos de forma estructurada
+            CargarArbolCatalogoPermisos();  //carga Arbol de todos los permisos sin estructurar
         }
 
 
+
+        //---------------- CARGA DE ARBOLES ------------------------------------
         private void CargarArbol()
         {
-            tvPermisos.Nodes.Clear();
+            tvPermisosEstructurados.Nodes.Clear();
 
             List<COMPONENTE> listaCompleta = gestorPermisos.ObtenerTodosLosPermisos();
 
+            OrdenarCompuestosAscendente(listaCompleta);
+
             foreach (var p in listaCompleta)
             {
-                // Si NO es hijo de nadie, entonces es una raíz y lo dibujamos
-                if (EsHijo(p.Id, listaCompleta) == false)
+                if (p is BE.PermisoCompuesto && EsHijo(p.Id, listaCompleta) == false)
                 {
-                    TreeNode nodo = tvPermisos.Nodes.Add(p.Id.ToString(), p.Nombre);
+                    TreeNode nodo = tvPermisosEstructurados.Nodes.Add(p.Id.ToString(), p.Nombre);
                     nodo.Tag = p;
-                                        
+
                     LlenarNodosRecursivo(nodo, p);
                 }
             }
 
-            tvPermisos.ExpandAll();
-        }
+            List<BE.USUARIO> usuarios = gestorUsuarios.Listar();
+            foreach (var u in usuarios)
+            {
+                TreeNode nodoUsuario = tvPermisosEstructurados.Nodes.Add("U_" + u.Id, "👤 " + u.Nombre);
+                nodoUsuario.Tag = u;
 
+
+                List<COMPONENTE> roles = gestorPermisos.ObtenerRolesDeUsuario(u);
+
+                foreach (var rol in roles)
+                {
+
+                    TreeNode nodoRol = nodoUsuario.Nodes.Add(rol.Id.ToString(), rol.Nombre);
+                    nodoRol.Tag = rol;
+
+                    LlenarNodosDesdeObjeto(nodoRol, rol);
+                }
+            }
+
+            
+        }
         private void LlenarNodosRecursivo(TreeNode nodoPadre, COMPONENTE componente)
         {
             if (componente is PermisoCompuesto compuesto)
@@ -65,7 +87,6 @@ namespace GUI
                 }
             }
         }
-
         private bool EsHijo(int id, List<COMPONENTE> todos)
         {
             foreach (var permiso in todos)            {
@@ -85,115 +106,194 @@ namespace GUI
             }
             return false;
         }
-        private void btnCrearPermiso_Click(object sender, EventArgs e)
+        private void LlenarNodosDesdeObjeto(TreeNode nodoPadre, COMPONENTE componente)
         {
-
-            BE.COMPONENTE permisoNuevo;
-
-            string nombre = txtNombrePermiso.Text;
-            string tipo = cmbTipoPermiso.SelectedItem.ToString();
-
-            if (tipo == "COMPUESTO")
+            if (componente is BE.PermisoCompuesto compuesto)
             {
-                permisoNuevo = new BE.PermisoCompuesto();
-            }
-            else
-            {
-                permisoNuevo = new PermisoSimple();
-            }
-
-            permisoNuevo.Nombre = nombre;
-
-            gestorPermisos.CrearPermiso(permisoNuevo);
-
-            if (tvPermisos.SelectedNode != null)
-            {
-                BE.COMPONENTE padreSeleccionado = (BE.COMPONENTE)tvPermisos.SelectedNode.Tag;
-
-                if (padreSeleccionado is BE.PermisoCompuesto)
+                foreach (var hijo in compuesto.ObtenerHijos())
                 {
-                    gestorPermisos.AsignarHijo(padreSeleccionado, permisoNuevo);
+                    TreeNode nodoHijo = nodoPadre.Nodes.Add(hijo.Id.ToString(), hijo.Nombre);
+                    nodoHijo.Tag = hijo;
+
+                    LlenarNodosDesdeObjeto(nodoHijo, hijo);
+                }
+            }
+        }
+        private void CargarArbolCatalogoPermisos()
+        {
+            tvPermisosSinEstructurar.Nodes.Clear();
+            List<BE.COMPONENTE> todos = gestorPermisos.ObtenerTodosLosPermisos();
+
+            foreach (var p in todos)
+            {
+                string prefijo;
+
+                if (p is BE.PermisoCompuesto)
+                {
+                    prefijo = "[ROL] ";
                 }
                 else
                 {
-                    MessageBox.Show("El permiso seleccionado no es un contenedor (Rol). El nuevo permiso se creó de forma independiente.");
+                    prefijo = "";
+                }
+
+                TreeNode nodo = tvPermisosSinEstructurar.Nodes.Add(p.Id.ToString(), prefijo + p.Nombre);
+                nodo.Tag = p;
+            }
+        }
+
+
+
+
+
+        //---------------- BOTONES ------------------------------------
+        private void btnCrearPermiso_Click(object sender, EventArgs e)
+        {
+            if (!SEGURIDAD.TienePermiso("ALTA_ROL"))
+            {
+                MessageBox.Show("No tiene permisos para crear nuevos roles.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            BE.COMPONENTE permisoNuevo = new BE.PermisoCompuesto();
+
+            string nombre = txtNombrePermiso.Text;     
+            permisoNuevo.Nombre = nombre;
+
+            gestorPermisos.CrearPermiso(permisoNuevo);
+            CargarArbol();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e) 
+        {
+            //Desvincular si es Simple 
+            //Eliminar si es Compuesto sin hijos
+
+            if (!SEGURIDAD.TienePermiso("ELIMINAR_ROL"))
+            {
+                MessageBox.Show("No tiene permisos para eliminar.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (tvPermisosEstructurados.SelectedNode == null) return;
+
+            COMPONENTE seleccionado = (COMPONENTE)tvPermisosEstructurados.SelectedNode.Tag;
+
+            if (tvPermisosEstructurados.SelectedNode.Parent != null)
+            {
+                // CASO 1: Es un hijo, siempre se desvincula (sea Simple o Compuesto)
+                COMPONENTE padre = (COMPONENTE)tvPermisosEstructurados.SelectedNode.Parent.Tag;
+                gestorPermisos.DesvincularPermiso(padre, seleccionado);
+            }
+            else
+            {
+                // CASO 2: Es un nodo raíz. Aquí validamos el tipo
+                if (seleccionado is BE.PermisoSimple)
+                {
+                    MessageBox.Show("Los permisos simples son de sistema y no se pueden eliminar, solo desvincular de los roles.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    var confirm = MessageBox.Show($"¿Desea eliminar permanentemente el Rol '{seleccionado.Nombre}'?"
+                                                , "Confirmar", MessageBoxButtons.YesNo);
+                    if (confirm == DialogResult.Yes)
+                    {
+                        gestorPermisos.EliminarPermiso(seleccionado);
+                    }
                 }
             }
 
             CargarArbol();
         }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (tvPermisos.SelectedNode == null) return;
-
-            COMPONENTE permisoSeleccionado = (COMPONENTE)tvPermisos.SelectedNode.Tag;
-
-            var confirm = MessageBox.Show("¿Está seguro de eliminar este permiso? Se borrarán sus relaciones.",
-                                          "Confirmar", MessageBoxButtons.YesNo);
-            if (confirm == DialogResult.Yes)
-            {                
-                gestorPermisos.EliminarPermiso(permisoSeleccionado);
-                
-                CargarArbol();
-            }
-        }
-
-        private void ComboBoxConfiguracion()
-        {
-            cmbTipoPermiso.Items.Clear();
-            cmbTipoPermiso.Items.Add("SIMPLE");
-            cmbTipoPermiso.Items.Add("COMPUESTO");
-            
-            cmbTipoPermiso.SelectedIndex = 0;
-            
-            cmbTipoPermiso.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
-
-        private void cmbUsuarios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //BE.USUARIO usuarioSeleccionado = (BE.USUARIO)cmbUsuarios.SelectedItem;
-
-            //CargarArbol();
-
-            //List<COMPONENTE> asignados = gestorPermisos.ObtenerPermisosDeUsuario(usuarioSeleccionado);
-
-            
-            ////lstPermisosAsignados.DataSource = asignados;
-            ////lstPermisosAsignados.DisplayMember = "Nombre";
-        }
-
         private void btnAsignarPermisoAUsuario_Click(object sender, EventArgs e)
         {
-            //if (tvPermisos.SelectedNode == null) return;
+            if (!SEGURIDAD.TienePermiso("ASIGNAR_ROL"))
+            {
+                MessageBox.Show("No tiene permisos para asignar.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //BE.USUARIO usuario = (BE.USUARIO)cmbUsuarios.SelectedItem;
-            //COMPONENTE permisoSeleccionado = (COMPONENTE)tvPermisos.SelectedNode.Tag;
+            //asignar de catalogo...
+            if (tvPermisosSinEstructurar.SelectedNode == null) return;
+            BE.COMPONENTE permisoSeleccionado = (BE.COMPONENTE)tvPermisosSinEstructurar.SelectedNode.Tag;
 
-            
-            //gestorPermisos.AsignarPermisoAUsuario(usuario, permisoSeleccionado);
+            //...a permiso
+            if (tvPermisosEstructurados.SelectedNode == null) return;
+            object destino = tvPermisosEstructurados.SelectedNode.Tag;
 
-            //// Refrescamos la lista de la derecha
-            //ActualizarTreeViewAsignados(usuario);
+            if (destino is BE.PermisoCompuesto rolPadre)
+            {
+                // Caso A: Armamos la jerarquía de un ROL
+                if (EsBucle(rolPadre, permisoSeleccionado))
+                {
+                    MessageBox.Show("ERROR - La asignación crearía una referencia circular", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                gestorPermisos.AsignarHijo(rolPadre, permisoSeleccionado);
+            }
+            else if (destino is BE.USUARIO usuarioDestino)
+            {
+                // Caso B: Aignamos un ROL a un USUARIO
+                if (permisoSeleccionado is BE.PermisoCompuesto)
+                {
+                    gestorPermisos.AsignarRolAUsuario(usuarioDestino, permisoSeleccionado);
+                }
+                else
+                {
+                    MessageBox.Show("A un usuario solo se le pueden asignar Roles (Permisos Compuestos).");
+                    return;
+                }
+            }
+
+            CargarArbol();
+            CargarArbolCatalogoPermisos();
         }
 
-        private void ActualizarTreeViewAsignados(BE.USUARIO usuario)
+        private bool EsBucle(COMPONENTE padre, COMPONENTE hijo)
         {
-            //tvPermisosAUsuarios.Nodes.Clear();
+            if (padre.Id == hijo.Id) return true;
+
+            if (hijo is BE.PermisoCompuesto compuesto)
+            {
+                foreach (var subHijo in compuesto.ObtenerHijos())
+                {
+                    if (EsBucle(padre, subHijo))
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        private void lblActualizarPermisosEstructurados_Click(object sender, EventArgs e)
+        {
+            CargarArbol();
+        }
+        private void btnActualizarPermisosSinEstructurar_Click(object sender, EventArgs e)
+        {
+            CargarArbolCatalogoPermisos();
+        }
+
+
+        //---------------- FUNCION DECORATIVA ------------------------------------
+        private void OrdenarCompuestosAscendente(List<BE.COMPONENTE> listaCompleta)
+        {
+            
+            List<COMPONENTE> compuestos = new List<COMPONENTE>();
+            List<COMPONENTE> simples = new List<COMPONENTE>();
 
             
-            //List<COMPONENTE> raicesAsignadas = gestorPermisos.ObtenerRaicesDelUsuario(usuario.Id);
+            foreach (var p in listaCompleta)
+            {
+                if (p is BE.PermisoCompuesto)
+                    compuestos.Add(p);
+                else
+                    simples.Add(p);
+            }
 
-            //foreach (var p in raicesAsignadas)
-            //{
-            //    TreeNode nodo = tvPermisosAUsuarios.Nodes.Add(p.Id.ToString(), p.Nombre);
-            //    nodo.Tag = p;
-
-            //    // 2. Usamos la misma recursión para dibujar sus hijos
-            //    LlenarNodosRecursivo(nodo, p);
-            //}
-
-            //tvPermisosAUsuarios.ExpandAll();
+            List<COMPONENTE> listaOrdenada = new List<COMPONENTE>();
+            listaOrdenada.AddRange(compuestos);
+            listaOrdenada.AddRange(simples);
         }
     }
 }

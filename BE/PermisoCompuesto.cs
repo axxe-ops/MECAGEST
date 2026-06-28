@@ -22,5 +22,17 @@ namespace BE
         {
             listaPermisosHijos.Remove(componente);
         }
+
+        public override bool TienePermiso(string nombrePermiso)
+        {
+            if (this.Nombre == nombrePermiso) return true;
+
+            foreach (var hijo in listaPermisosHijos)
+            {
+                if (hijo.TienePermiso(nombrePermiso)) return true;
+            }
+
+            return false;
+        }
     }
 }

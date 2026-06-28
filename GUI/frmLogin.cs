@@ -24,7 +24,12 @@ namespace GUI
             txtContraseña.UseSystemPasswordChar = true; //contraseñatxt oculta predeterminadamente
             WindowState = FormWindowState.Maximized;
         }
-        
+
+
+
+
+
+        //---------------- BOTONES ------------------------------------
         private void btnIniciarSesion_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtContraseña.Text))

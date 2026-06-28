@@ -1,4 +1,5 @@
 ﻿using BE;
+using SERVICE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,30 +27,50 @@ namespace GUI
 
         }
 
-        private void gestiónPermisosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPermisos frm = new frmPermisos();
-            frm.MdiParent = this;
-            frm.Show();
+
+
+        //---------------- BOTONES ------------------------------------
+        private void gestionPermisosToolStripMenuItem_Click(object sender, EventArgs e)
+        { //Gestion Permisos
+            if (SEGURIDAD.TienePermiso("ACCESO_GESTION_PERMISO"))
+            {
+                frmPermisos frm = new frmPermisos();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tenés permiso para acceder a esta sección.", "Acceso Denegado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Está seguro que desea cerrar sesión?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        { // Gestion Bitacora
+            if (SEGURIDAD.TienePermiso("ACCESO_GESTION_BITACORA"))
             {
-                bool exito = SERVICE.SESSIONMANAGER.ObtenerInstancia().Logout();
+                frmBitacora frm = new frmBitacora();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {                
+                MessageBox.Show("No tenés permiso para ver la bitácora del sistema.", "Acceso Denegado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
-                if (exito)
-                {                    
-                    frmLogin login = new frmLogin();
-                    login.Show();
-                    this.Close();
-                }
+        private void menúToolStripMenuItem_Click(object sender, EventArgs e)
+        { // Men
+            foreach (Form frm in this.MdiChildren.ToList())
+            {
+                frm.Close();
             }
         }
 
         private void cerrarSesiónToolStripMenuItem1_Click(object sender, EventArgs e)
-        {           
+        { //Cerrar Sesion           
             if (MessageBox.Show("Usuario: " + SERVICE.SESSIONMANAGER.ObtenerInstancia().usuario + " - ¿Está seguro que desea cerrar sesión?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 SERVICE.BITACORABLL.Registrar(
@@ -61,16 +82,15 @@ namespace GUI
                 bool exito = SERVICE.SESSIONMANAGER.ObtenerInstancia().Logout();
 
                 if (exito)
-                {          
+                {
                     frmLogin login = new frmLogin();
                     login.Show();
                     this.Close();
                 }
             }
         }
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        { // Salir
             if (MessageBox.Show("¿Está seguro que deseas salir de la aplicación?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 SERVICE.BITACORABLL.Registrar(
@@ -79,31 +99,9 @@ namespace GUI
                      1
                 );
 
-                SERVICE.SESSIONMANAGER.ObtenerInstancia().Logout();                
+                SERVICE.SESSIONMANAGER.ObtenerInstancia().Logout();
 
                 Application.Exit();
-            }
-        }
-
-        private void gestionPermisosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPermisos frm = new frmPermisos();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmBitacora frm = new frmBitacora();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void menúToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form frm in this.MdiChildren.ToList())
-            {
-                frm.Close();
             }
         }
     }

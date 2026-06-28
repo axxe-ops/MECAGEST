@@ -68,5 +68,49 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
+
+        public void DesvincularPermiso(COMPONENTE padre, COMPONENTE seleccionado)
+        {
+            mapperPermiso.DesvincularPermiso(padre, seleccionado);
+        }
+
+        public void AsignarRolAUsuario(USUARIO usuarioDestino, COMPONENTE permisoSeleccionado)
+        {
+            mapperPermiso.AsignarRolAUsuario(usuarioDestino, permisoSeleccionado);
+        }
+
+        public List<COMPONENTE> ObtenerRolesDeUsuario(USUARIO u)
+        {
+            // 1. Obtenemos los roles "raíz" asignados al usuario desde la DAL
+            List<COMPONENTE> roles = mapperPermiso.ObtenerRolesDeUsuario(u);
+
+            // 2. Hidratamos cada rol (cargamos sus hijos en memoria)
+            foreach (var c in roles)
+            {
+                if (c is PermisoCompuesto compuesto)
+                {
+                    // Completamos la jerarquía llamando a la lógica de carga de hijos
+                    CargarHijosRecursivo(compuesto);
+                }
+            }
+            return roles;
+        }
+
+        private void CargarHijosRecursivo(PermisoCompuesto padre)
+        {
+            // Buscamos los hijos directos de este compuesto
+            List<COMPONENTE> hijos = mapperPermiso.ObtenerHijosDePermiso(padre.Id);
+
+            foreach (var hijo in hijos)
+            {
+                padre.Agregar(hijo);
+
+                // Si el hijo es compuesto, seguimos bajando
+                if (hijo is PermisoCompuesto hijoCompuesto)
+                {
+                    CargarHijosRecursivo(hijoCompuesto);
+                }
+            }
+        }
     }
 }

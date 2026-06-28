@@ -21,5 +21,10 @@ namespace BE
         {
             throw new NotImplementedException();
         }
+
+        public override bool TienePermiso(string nombrePermiso)
+        {
+            return this.Nombre == nombrePermiso;
+        }
     }
 }

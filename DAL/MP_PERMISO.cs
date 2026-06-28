@@ -1,6 +1,7 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,8 +12,6 @@ namespace DAL
 {
     public class MP_PERMISO : MAPPER<BE.COMPONENTE>
     {
-        public ACCESO acceso = new ACCESO();
-
         public List<COMPONENTE> ObtenerTodosLosPermisos()
         {
             List<BE.COMPONENTE> listaHijos = new List<BE.COMPONENTE>();
@@ -69,7 +68,7 @@ namespace DAL
                 {
                     hijo = new BE.PermisoCompuesto();
                 }
-                else 
+                else
                 {
                     hijo = new BE.PermisoSimple();
                 }
@@ -109,17 +108,17 @@ namespace DAL
                 COMPONENTE c;
 
                 string tipo = row["tipo"].ToString();
-                
+
                 if (tipo == "COMPUESTO")
                     c = new PermisoCompuesto();
                 else
                     c = new PermisoSimple();
 
                 c.Id = Convert.ToInt32(row["id_permiso"]);
-                c.Nombre = row["nombre"].ToString();                
+                c.Nombre = row["nombre"].ToString();
 
 
-                CargarHijos(c); // Cargamos hijos de forma recursiva
+                CargarHijos(c); // Cargamos hijos de forma recursiva !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                 permisosRaiz.Add(c);
             }
@@ -127,11 +126,11 @@ namespace DAL
         }
 
         private void CargarHijos(COMPONENTE padre)
-        {            
+        {
             if (padre is PermisoCompuesto)
             {
                 List<SqlParameter> parametros = new List<SqlParameter>();
-                parametros.Add(acceso.CrearParametro("idPadre", padre.Id));
+                parametros.Add(acceso.CrearParametro("id_Padre", padre.Id));
 
                 acceso.Abrir();
                 DataTable dtHijos = acceso.Leer("sp_ObtenerHijosDePermiso", parametros);
@@ -158,7 +157,7 @@ namespace DAL
             }
         }
 
-        
+
         public override void Insertar(COMPONENTE obj)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
@@ -169,11 +168,11 @@ namespace DAL
             paramId.Direction = ParameterDirection.Output;
             parametros.Add(paramId);
 
-            acceso.Abrir();            
+            acceso.Abrir();
             acceso.Escribir("sp_CrearPermiso", parametros);
             acceso.Cerrar();
 
-            
+
             obj.Id = (int)paramId.Value;
         }
 
@@ -185,23 +184,18 @@ namespace DAL
         public override void Eliminar(COMPONENTE obj)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("idPermiso", obj.Id));
+            parametros.Add(acceso.CrearParametro("id_permiso", obj.Id));
 
             try
             {
                 acceso.Abrir();
-                int resultado = acceso.Escribir("sp_EliminarPermiso", parametros);
+                acceso.Escribir("sp_EliminarPermiso", parametros);
                 acceso.Cerrar();
-
-                if (resultado == 0)
-                {
-                    throw new Exception("No se pudo eliminar el permiso. Verifique que no existan dependencias críticas.");
-                }
             }
             catch (Exception ex)
             {
                 acceso.Cerrar();
-                throw new Exception("Error en DAL al eliminar permiso: " + ex.Message);
+                throw new Exception("Error al eliminar el permiso de la base de datos.", ex);
             }
         }
 
@@ -229,6 +223,117 @@ namespace DAL
             }
         }
 
-        
+        public void DesvincularPermiso(COMPONENTE padre, COMPONENTE hijo)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_padre", padre.Id));
+            parametros.Add(acceso.CrearParametro("id_hijo", hijo.Id));
+
+            try
+            {
+                acceso.Abrir();
+                acceso.Escribir("sp_EliminarRelacionPermisos", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al desvincular el permiso.", ex);
+            }
+        }
+
+        public void AsignarRolAUsuario(USUARIO usuario, COMPONENTE permiso)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_usuario", usuario.Id));
+            parametros.Add(acceso.CrearParametro("id_permiso", permiso.Id));
+
+            try
+            {
+                acceso.Abrir();
+                acceso.Escribir("sp_AsignarPermisoAUsuario", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al asignar el rol al usuario en la base de datos.", ex);
+            }
+        }
+
+        public List<COMPONENTE> ObtenerRolesDeUsuario(USUARIO u)
+        {
+            List<COMPONENTE> lista = new List<COMPONENTE>();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_usuario", u.Id));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_ObtenerRolesDeUsuario", parametros);
+                acceso.Cerrar();
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    COMPONENTE c;
+                    string tipo = row["tipo"].ToString();
+
+                    if (tipo == "COMPUESTO")
+                        c = new PermisoCompuesto();
+                    else
+                        c = new PermisoSimple();
+
+                    c.Id = Convert.ToInt32(row["id_permiso"]);
+                    c.Nombre = row["nombre"].ToString();
+
+                    lista.Add(c);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al obtener los roles de usuario con id.", ex);
+            }
+
+            return lista;
+        }
+
+        public List<COMPONENTE> ObtenerHijosDePermiso(int idPadre)
+        {
+            List<COMPONENTE> hijos = new List<COMPONENTE>();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_padre", idPadre));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_ObtenerHijosDePermiso", parametros);
+                acceso.Cerrar();
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    COMPONENTE hijo;
+                    string tipo = row["tipo"].ToString();
+
+                    if (tipo == "COMPUESTO")
+                        hijo = new PermisoCompuesto();
+                    else
+                        hijo = new PermisoSimple();
+
+                    hijo.Id = Convert.ToInt32(row["id_permiso"]);
+                    hijo.Nombre = row["nombre"].ToString();
+
+                    hijos.Add(hijo);
+                }
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al intentar recuperar los hijos del permiso con ID: " + idPadre + ". Verifique la relación en la base de datos.", ex);
+            }
+            
+            return hijos;
+        }
     }
 }
