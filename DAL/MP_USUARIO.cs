@@ -80,5 +80,52 @@ namespace DAL
             }
             return null;
         }
+
+        public IDIOMA ObtenerIdiomaPreferido(USUARIO usuarioActual)
+        {
+            IDIOMA idioma = null;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@id_usuario", usuarioActual.Id));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_ObtenerIdiomaPorUsuario", parametros);
+                acceso.Cerrar();
+
+                if (dt.Rows.Count > 0)
+                {
+                    idioma = new IDIOMA();
+                    idioma.Id = Convert.ToInt32(dt.Rows[0]["id_idioma"]);
+                    idioma.Nombre = dt.Rows[0]["nombre_idioma"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al obtener el idioma preferido del usuario.", ex);
+            }
+
+            return idioma;
+        }
+
+        public void ActualizarIdiomaPreferido(USUARIO usuarioActual, IDIOMA nuevoIdioma)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_usuario", usuarioActual.Id));
+            parametros.Add(acceso.CrearParametro("id_idioma", nuevoIdioma.Id));
+
+            try
+            {
+                acceso.Abrir();
+                acceso.Escribir("sp_ActualizarIdiomaPreferido", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al persistir la preferencia de idioma.", ex);
+            }
+        }
     }
 }

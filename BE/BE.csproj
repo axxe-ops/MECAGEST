@@ -43,8 +43,12 @@
   <ItemGroup>
     <Compile Include="BITACORA.cs" />
     <Compile Include="COMPONENTE.cs" />
+    <Compile Include="ETIQUETA.cs" />
+    <Compile Include="IDIOMA.cs" />
+    <Compile Include="IObserverIdioma.cs" />
     <Compile Include="PermisoCompuesto.cs" />
     <Compile Include="PermisoSimple.cs" />
+    <Compile Include="TRADUCCION.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

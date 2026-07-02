@@ -93,22 +93,23 @@
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.bitacoraToolStripMenuItem.Text = "Gestion Bitacora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
             // gestionPermisosToolStripMenuItem
             // 
             this.gestionPermisosToolStripMenuItem.Name = "gestionPermisosToolStripMenuItem";
-            this.gestionPermisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestionPermisosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.gestionPermisosToolStripMenuItem.Text = "Gestion Permisos";
             this.gestionPermisosToolStripMenuItem.Click += new System.EventHandler(this.gestionPermisosToolStripMenuItem_Click);
             // 
             // gestionIdiomasToolStripMenuItem
             // 
             this.gestionIdiomasToolStripMenuItem.Name = "gestionIdiomasToolStripMenuItem";
-            this.gestionIdiomasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestionIdiomasToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.gestionIdiomasToolStripMenuItem.Text = "Gestion Idiomas";
+            this.gestionIdiomasToolStripMenuItem.Click += new System.EventHandler(this.gestionIdiomasToolStripMenuItem_Click);
             // 
             // sistemaToolStripMenuItem
             // 
@@ -124,20 +125,21 @@
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
+            this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem1
             // 
             this.cerrarSesiónToolStripMenuItem1.Name = "cerrarSesiónToolStripMenuItem1";
-            this.cerrarSesiónToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesiónToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesiónToolStripMenuItem1.Text = "Cerrar Sesión";
             this.cerrarSesiónToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem1_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 

@@ -20,6 +20,8 @@ namespace GUI
         }
         private void frmBitacora_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
+
             dtpDesde.Value = DateTime.Now.AddDays(-7);
             dtpHasta.Value = DateTime.Now;
 

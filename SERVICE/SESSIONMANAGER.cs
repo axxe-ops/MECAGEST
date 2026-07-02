@@ -35,8 +35,13 @@ namespace SERVICE
                     instancia = new SESSIONMANAGER();
                     instancia.usuario = usuarioLogueado;
 
+                    //cargo permisos
                     BLL.PERMISO_BLL gestorPermisos = new BLL.PERMISO_BLL();
                     instancia.usuario.Permisos = gestorPermisos.ObtenerPermisosUsuario(usuarioLogueado);
+
+                    //cargo idioma
+                    BE.IDIOMA idiomaPreferido = gestorUsuario.ObtenerIdiomaPreferido(usuarioLogueado);
+                    IDIOMABLL.ObtenerInstanciaIdioma().CambiarIdioma(idiomaPreferido);
 
                     return true;
                 }

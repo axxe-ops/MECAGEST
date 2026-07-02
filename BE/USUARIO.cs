@@ -36,6 +36,14 @@ namespace BE
 			set { permisos = value; }
 		}
 
+		private IDIOMA idiomaPreferido;
+		public IDIOMA IdiomaPreferido
+		{
+			get { return idiomaPreferido; }
+			set { idiomaPreferido = value; }
+		}
+
+
 
 
 		public override string ToString()

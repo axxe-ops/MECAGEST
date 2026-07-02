@@ -35,5 +35,16 @@ namespace BLL
         {
             return mapperUsuario.Listar();
         }
+
+        public void ActualizarIdiomaPreferido(USUARIO usuarioActual, IDIOMA nuevoIdioma)
+        {
+            mapperUsuario.ActualizarIdiomaPreferido(usuarioActual, nuevoIdioma);
+        }
+
+        public IDIOMA ObtenerIdiomaPreferido(USUARIO usuarioActual)
+        {
+            return mapperUsuario.ObtenerIdiomaPreferido(usuarioActual);
+        }
+
     }
 }

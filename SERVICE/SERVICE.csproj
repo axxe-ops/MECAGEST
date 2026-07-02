@@ -44,9 +44,11 @@
   <ItemGroup>
     <Compile Include="BITACORABLL.cs" />
     <Compile Include="ENCRIPTADO.cs" />
+    <Compile Include="IDIOMABLL.cs" />
     <Compile Include="SEGURIDAD.cs" />
     <Compile Include="SESSIONMANAGER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TRADUCCIONBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

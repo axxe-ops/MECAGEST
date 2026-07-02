@@ -54,6 +54,23 @@ namespace DAL
             return filas;
         }
 
+        public object EjecutarEscalar(string sql, List<SqlParameter> parametros = null)
+        {
+            SqlCommand cmd = CrearComando(sql, parametros);
+            object resultado = null;
+
+            try
+            {
+                resultado = cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar escalar en la base de datos.", ex);
+            }
+
+            return resultado;
+        }
+
         public DataTable Leer(string sql, List<SqlParameter> parametros = null)
         {
             SqlDataAdapter adaptador = new SqlDataAdapter();
@@ -90,6 +107,7 @@ namespace DAL
             return param;
         }
 
+        
     }
 
 }
