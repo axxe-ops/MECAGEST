@@ -23,6 +23,8 @@ namespace GUI
         {
             txtContraseña.UseSystemPasswordChar = true; //contraseñatxt oculta predeterminadamente
             WindowState = FormWindowState.Maximized;
+
+            lblParaProfe.Text =" Usuario: axel \n Contraseña: 1234 \n\n Usuario: lauti \n Contraseña: 1000";
         }
 
 
@@ -82,6 +84,11 @@ namespace GUI
                 txtContraseña.UseSystemPasswordChar = true;               
 
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

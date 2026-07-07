@@ -40,6 +40,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
+            this.lblParaProfe = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelInicioSesion.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -53,6 +54,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panelInicioSesion, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblParaProfe, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -62,6 +64,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(920, 638);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // panelInicioSesion
             // 
@@ -167,6 +170,14 @@
             this.lblContraseña.TabIndex = 7;
             this.lblContraseña.Text = "Contraseña";
             // 
+            // lblParaProfe
+            // 
+            this.lblParaProfe.AutoSize = true;
+            this.lblParaProfe.Location = new System.Drawing.Point(660, 123);
+            this.lblParaProfe.Name = "lblParaProfe";
+            this.lblParaProfe.Size = new System.Drawing.Size(0, 13);
+            this.lblParaProfe.TabIndex = 3;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +188,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panelInicioSesion.ResumeLayout(false);
             this.panelInicioSesion.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -198,6 +210,7 @@
         private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.Button btnMostrar_Ocultar;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblParaProfe;
     }
 }
 
