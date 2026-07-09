@@ -22,7 +22,21 @@ namespace DAL
         }
         public override void Modificar(USUARIO obj)
         {
-            throw new NotImplementedException();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id", obj.Id));
+            parametros.Add(acceso.CrearParametro("nombre", obj.Nombre));
+
+            try
+            {
+                acceso.Abrir();
+                acceso.Escribir("sp_ModificarUsuario", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al modificar usuario", ex);
+            }
         }
 
         public override List<USUARIO> Listar()
@@ -125,6 +139,34 @@ namespace DAL
             {
                 acceso.Cerrar();
                 throw new Exception("Error al persistir la preferencia de idioma.", ex);
+            }
+        }
+
+        public USUARIO ObtenerUsuarioPorId(int idUsuarioAfectado)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_usuario", idUsuarioAfectado));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_Usuario_ObtenerPorId", parametros);
+                acceso.Cerrar();
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    USUARIO usuario = new USUARIO();
+                    usuario.Id = Convert.ToInt32(row["Id"]);
+                    usuario.Nombre = row["Nombre"].ToString();
+                    return usuario;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al obtener usuario para restauración: " + ex.Message);
             }
         }
     }

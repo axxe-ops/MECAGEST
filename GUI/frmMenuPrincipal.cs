@@ -72,6 +72,23 @@ namespace GUI
             frm.Show();
         }
 
+        private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SEGURIDAD.TienePermiso("ACCESO_AUDITORIA"))
+            {
+                frmAuditoria frm = new frmAuditoria();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tenés permiso para ver la auditoria del sistema.", "Acceso Denegado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            
+        }
+
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         { // Menu
             foreach (Form frm in this.MdiChildren.ToList())
@@ -86,6 +103,8 @@ namespace GUI
             frm.MdiParent = this;
             frm.Show();
         }
+
+        
 
         private void cerrarSesiónToolStripMenuItem1_Click(object sender, EventArgs e)
         { //Cerrar Sesion           
@@ -137,6 +156,10 @@ namespace GUI
             IDIOMABLL.ObtenerInstanciaIdioma().Desuscribir(this);
         }
 
-        
+        public void ActualizarBarraEstado()
+        {
+            var usuario = SERVICE.SESSIONMANAGER.ObtenerInstancia().usuario;
+            tsslblUsuarioActual.Text = "Usuario: " + usuario.ToString();
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace BLL
 
         public void ModificarUsuario(BE.USUARIO usu)
         {
-
+            mapperUsuario.Modificar(usu);
         }
 
         public List<USUARIO> Listar()
@@ -46,5 +46,9 @@ namespace BLL
             return mapperUsuario.ObtenerIdiomaPreferido(usuarioActual);
         }
 
+        public USUARIO ObtenerUsuarioPorId(int idUsuarioAfectado)
+        {
+            return mapperUsuario.ObtenerUsuarioPorId(idUsuarioAfectado);
+        }
     }
 }

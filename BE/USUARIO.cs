@@ -43,12 +43,23 @@ namespace BE
 			set { idiomaPreferido = value; }
 		}
 
-
-
-
-		public override string ToString()
+        public override string ToString()
         {
             return $"{nombre}";
+        }
+
+
+
+
+
+        //------------------- Patron memento ----------------- (T06b. Use la BE.usuario como originator)
+        public USUARIO_MEMENTO CrearMemento()
+        {
+            return new USUARIO_MEMENTO(this.Nombre);
+        }
+        public void Restaurar(USUARIO_MEMENTO memento)
+        {
+            this.Nombre = memento.Nombre;
         }
 
 	}

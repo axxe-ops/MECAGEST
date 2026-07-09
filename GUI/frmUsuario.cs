@@ -1,4 +1,5 @@
-﻿using SERVICE;
+﻿using BE;
+using SERVICE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace GUI
     {
         IDIOMABLL gestorIdioma = new IDIOMABLL();
         BLL.USUARIO_BLL gestorUsuario = new BLL.USUARIO_BLL();
+        USUARIO_CARETAKER usuarioCaretaker = new USUARIO_CARETAKER();
         public frmUsuario()
         {
             InitializeComponent();
@@ -40,8 +42,34 @@ namespace GUI
             gestorUsuario.ActualizarIdiomaPreferido(usuarioActual, nuevoIdioma);
 
         }
+        private void btnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            USUARIO usuarioSeleccionado = SESSIONMANAGER.ObtenerInstancia().usuario;
+            USUARIO_MEMENTO memento = usuarioSeleccionado.CrearMemento();
 
+            string nombreActor = SESSIONMANAGER.ObtenerInstancia().usuario.Nombre;
+            usuarioCaretaker.GuardarEnAuditoria(memento, usuarioSeleccionado.Id, nombreActor);
 
+            usuarioSeleccionado.Nombre = txtNombre.Text;
+            gestorUsuario.ModificarUsuario(usuarioSeleccionado);
+
+            txtNombre.Text = "";
+            ((frmMenuPrincipal)this.MdiParent).ActualizarBarraEstado();
+
+        }
+
+        private void btnVerHistorial_Click(object sender, EventArgs e)
+        {
+            // Obtenemos una referencia al formulario principal (el contenedor)
+            frmMenuPrincipal menuPrincipal = this.MdiParent as frmMenuPrincipal;
+
+            if (menuPrincipal != null)
+            {
+                frmAuditoria formAuditoria = new frmAuditoria();
+                formAuditoria.MdiParent = menuPrincipal;
+                formAuditoria.Show();
+            }
+        }
 
 
         //---------------- CONFIGURACIONES BASICAS ------------------------------------

@@ -98,7 +98,7 @@
             // 
             this.tvPermisosSinEstructurar.Location = new System.Drawing.Point(766, 41);
             this.tvPermisosSinEstructurar.Name = "tvPermisosSinEstructurar";
-            this.tvPermisosSinEstructurar.Size = new System.Drawing.Size(247, 375);
+            this.tvPermisosSinEstructurar.Size = new System.Drawing.Size(525, 375);
             this.tvPermisosSinEstructurar.TabIndex = 7;
             // 
             // lblPermisosCatalogo
@@ -132,7 +132,7 @@
             // 
             // btnActualizarPermisosSinEstructurar
             // 
-            this.btnActualizarPermisosSinEstructurar.Location = new System.Drawing.Point(938, 419);
+            this.btnActualizarPermisosSinEstructurar.Location = new System.Drawing.Point(1216, 419);
             this.btnActualizarPermisosSinEstructurar.Name = "btnActualizarPermisosSinEstructurar";
             this.btnActualizarPermisosSinEstructurar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizarPermisosSinEstructurar.TabIndex = 10;
@@ -153,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 518);
+            this.ClientSize = new System.Drawing.Size(1389, 518);
             this.Controls.Add(this.lblFlecha);
             this.Controls.Add(this.btnActualizarPermisosSinEstructurar);
             this.Controls.Add(this.lblActualizarPermisosEstructurados);

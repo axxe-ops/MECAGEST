@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ACCESO.cs" />
     <Compile Include="MAPPER.cs" />
+    <Compile Include="MP_AUDITORIA.cs" />
     <Compile Include="MP_BITACORA.cs" />
     <Compile Include="MP_IDIOMA.cs" />
     <Compile Include="MP_PERMISO.cs" />

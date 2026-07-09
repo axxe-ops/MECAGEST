@@ -3,28 +3,28 @@
   <Class Name="BE.COMPONENTE">
     <Position X="2.25" Y="0.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAACAAAQAAAAAACAAAEAgAAAAAAAAAAAAAAAAAAAAiA=</HashCode>
+      <HashCode>AAACAAAQACAAAACAAAEAgAAAAAgAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>COMPONENTE.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BE.USUARIO">
     <Position X="8" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAKEAAACgAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAKEAAACgAAAgAAAAAAAAAAAAgAAggI=</HashCode>
       <FileName>USUARIO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BE.PermisoCompuesto">
     <Position X="3.25" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAIAACA=</HashCode>
+      <HashCode>AAAAAAAQACAAAAAAAAEAAAAAAAgAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>PermisoCompuesto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BE.PermisoSimple">
     <Position X="1.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AAAAAAAQACAAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PermisoSimple.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -33,6 +33,13 @@
     <TypeIdentifier>
       <HashCode>AAACAACAAQAAgAEAAAAAgAAAAoAAAAYAAAAEAAAAAgA=</HashCode>
       <FileName>BITACORA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.USUARIO_MEMENTO">
+    <Position X="7.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>USUARIO_MEMENTO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
