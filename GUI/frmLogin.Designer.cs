@@ -41,6 +41,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.lblParaProfe = new System.Windows.Forms.Label();
+            this.lblErrorSeguridad = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelInicioSesion.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,6 +70,7 @@
             // panelInicioSesion
             // 
             this.panelInicioSesion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelInicioSesion.Controls.Add(this.lblErrorSeguridad);
             this.panelInicioSesion.Controls.Add(this.panel1);
             this.panelInicioSesion.Controls.Add(this.btnMostrar_Ocultar);
             this.panelInicioSesion.Controls.Add(this.lblResultado);
@@ -77,15 +79,15 @@
             this.panelInicioSesion.Controls.Add(this.txtNombre);
             this.panelInicioSesion.Controls.Add(this.lblNombre);
             this.panelInicioSesion.Controls.Add(this.lblContraseña);
-            this.panelInicioSesion.Location = new System.Drawing.Point(266, 126);
+            this.panelInicioSesion.Location = new System.Drawing.Point(266, 80);
             this.panelInicioSesion.Name = "panelInicioSesion";
-            this.panelInicioSesion.Size = new System.Drawing.Size(388, 385);
+            this.panelInicioSesion.Size = new System.Drawing.Size(388, 477);
             this.panelInicioSesion.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBoxLogo);
-            this.panel1.Location = new System.Drawing.Point(41, 15);
+            this.panel1.Location = new System.Drawing.Point(41, 73);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(308, 202);
             this.panel1.TabIndex = 14;
@@ -103,7 +105,7 @@
             // 
             // btnMostrar_Ocultar
             // 
-            this.btnMostrar_Ocultar.Location = new System.Drawing.Point(324, 263);
+            this.btnMostrar_Ocultar.Location = new System.Drawing.Point(324, 321);
             this.btnMostrar_Ocultar.Name = "btnMostrar_Ocultar";
             this.btnMostrar_Ocultar.Size = new System.Drawing.Size(25, 23);
             this.btnMostrar_Ocultar.TabIndex = 13;
@@ -114,7 +116,7 @@
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(85, 298);
+            this.lblResultado.Location = new System.Drawing.Point(85, 356);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(0, 13);
             this.lblResultado.TabIndex = 12;
@@ -123,7 +125,7 @@
             // 
             this.txtContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContraseña.Location = new System.Drawing.Point(105, 265);
+            this.txtContraseña.Location = new System.Drawing.Point(105, 323);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(213, 20);
             this.txtContraseña.TabIndex = 2;
@@ -131,9 +133,9 @@
             // btnIniciarSesion
             // 
             this.btnIniciarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIniciarSesion.Location = new System.Drawing.Point(41, 314);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(41, 385);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(308, 46);
+            this.btnIniciarSesion.Size = new System.Drawing.Size(308, 55);
             this.btnIniciarSesion.TabIndex = 3;
             this.btnIniciarSesion.Text = "Iniciar Sesion";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -143,7 +145,7 @@
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.Location = new System.Drawing.Point(105, 234);
+            this.txtNombre.Location = new System.Drawing.Point(105, 292);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(244, 20);
             this.txtNombre.TabIndex = 1;
@@ -153,7 +155,7 @@
             this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(55, 237);
+            this.lblNombre.Location = new System.Drawing.Point(55, 295);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 6;
@@ -164,7 +166,7 @@
             this.lblContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(38, 268);
+            this.lblContraseña.Location = new System.Drawing.Point(38, 326);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(61, 13);
             this.lblContraseña.TabIndex = 7;
@@ -173,10 +175,19 @@
             // lblParaProfe
             // 
             this.lblParaProfe.AutoSize = true;
-            this.lblParaProfe.Location = new System.Drawing.Point(660, 123);
+            this.lblParaProfe.Location = new System.Drawing.Point(660, 77);
             this.lblParaProfe.Name = "lblParaProfe";
             this.lblParaProfe.Size = new System.Drawing.Size(0, 13);
             this.lblParaProfe.TabIndex = 3;
+            // 
+            // lblErrorSeguridad
+            // 
+            this.lblErrorSeguridad.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorSeguridad.Location = new System.Drawing.Point(41, 7);
+            this.lblErrorSeguridad.Name = "lblErrorSeguridad";
+            this.lblErrorSeguridad.Size = new System.Drawing.Size(308, 63);
+            this.lblErrorSeguridad.TabIndex = 4;
+            this.lblErrorSeguridad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmLogin
             // 
@@ -211,6 +222,7 @@
         private System.Windows.Forms.Button btnMostrar_Ocultar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblParaProfe;
+        private System.Windows.Forms.Label lblErrorSeguridad;
     }
 }
 

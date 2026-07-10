@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [MECAGEST]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Database [MECAGEST]    Script Date: 10/07/2026 3:28:46 ******/
 CREATE DATABASE [MECAGEST]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [MECAGEST] SET QUERY_STORE = OFF
 GO
 USE [MECAGEST]
 GO
-/****** Object:  Table [dbo].[AUDITORIA_CAMBIOS]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[AUDITORIA_CAMBIOS]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BITACORA]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[BITACORA]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,22 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ETIQUETA]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[DIGITOS_VERIFICADORES]    Script Date: 10/07/2026 3:28:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DIGITOS_VERIFICADORES](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Tabla] [varchar](50) NOT NULL,
+	[ValorDVV] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ETIQUETA]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +145,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[IDIOMA]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[IDIOMA]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -144,7 +159,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PERMISO]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[PERMISO]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +174,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +189,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TRADUCCION]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[TRADUCCION]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +205,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[USUARIO]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,13 +215,14 @@ CREATE TABLE [dbo].[USUARIO](
 	[nombre] [varchar](50) NOT NULL,
 	[contrasena] [varchar](255) NOT NULL,
 	[id_idioma] [int] NULL,
+	[DVH] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -451,7 +467,45 @@ INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informaci
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (201, N'axel', CAST(N'2026-07-09T04:29:31.187' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (202, N'axel', CAST(N'2026-07-09T04:33:22.863' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (203, N'axel', CAST(N'2026-07-09T04:34:42.653' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (204, N'axel', CAST(N'2026-07-10T00:01:44.177' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (205, N'axel', CAST(N'2026-07-10T00:07:26.677' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (206, N'axel', CAST(N'2026-07-10T01:48:17.603' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (207, N'axel', CAST(N'2026-07-10T02:00:06.793' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (208, N'axel', CAST(N'2026-07-10T02:21:04.027' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (209, N'INVITADO', CAST(N'2026-07-10T02:26:18.183' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (210, N'INVITADO', CAST(N'2026-07-10T02:30:38.790' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (211, N'INVITADO', CAST(N'2026-07-10T02:31:31.970' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (212, N'INVITADO', CAST(N'2026-07-10T02:31:55.997' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (213, N'INVITADO', CAST(N'2026-07-10T02:45:51.843' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (214, N'INVITADO', CAST(N'2026-07-10T02:46:12.353' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (215, N'INVITADO', CAST(N'2026-07-10T02:47:13.240' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (216, N'INVITADO', CAST(N'2026-07-10T02:47:55.590' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (217, N'INVITADO', CAST(N'2026-07-10T02:48:19.170' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (218, N'INVITADO', CAST(N'2026-07-10T02:48:41.277' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (219, N'axel', CAST(N'2026-07-10T02:57:55.087' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: Error de integridad en tabla USUARIO, registro ID 3.', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (220, N'axel', CAST(N'2026-07-10T03:02:40.507' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (221, N'axel', CAST(N'2026-07-10T03:03:58.587' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (222, N'INVITADO', CAST(N'2026-07-10T03:04:10.830' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (223, N'pedro', CAST(N'2026-07-10T03:04:23.090' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (224, N'pedro', CAST(N'2026-07-10T03:06:01.117' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (225, N'axel', CAST(N'2026-07-10T03:15:03.870' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (226, N'axel', CAST(N'2026-07-10T03:15:22.807' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (227, N'axel', CAST(N'2026-07-10T03:22:50.350' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (228, N'axel', CAST(N'2026-07-10T03:23:15.643' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (229, N'lucass', CAST(N'2026-07-10T03:24:12.367' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (230, N'lucass', CAST(N'2026-07-10T03:24:20.513' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (231, N'lucass', CAST(N'2026-07-10T03:24:28.823' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (232, N'lucass', CAST(N'2026-07-10T03:24:35.720' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (233, N'lucass', CAST(N'2026-07-10T03:24:37.287' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (234, N'lucass', CAST(N'2026-07-10T03:24:43.977' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (235, N'axel', CAST(N'2026-07-10T03:25:15.217' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (236, N'lucass', CAST(N'2026-07-10T03:27:01.247' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
 SET IDENTITY_INSERT [dbo].[BITACORA] OFF
+GO
+SET IDENTITY_INSERT [dbo].[DIGITOS_VERIFICADORES] ON 
+
+INSERT [dbo].[DIGITOS_VERIFICADORES] ([Id], [Tabla], [ValorDVV]) VALUES (1, N'USUARIO', 9930)
+SET IDENTITY_INSERT [dbo].[DIGITOS_VERIFICADORES] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ETIQUETA] ON 
 
@@ -504,6 +558,7 @@ INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (78, N'PERMISO_AU
 INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (79, N'PERMISO_AUDITORIA_HISTORIAL_COMO_USUARIO', N'SIMPLE')
 INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (80, N'ACCESO_AUDITORIA', N'SIMPLE')
 INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (81, N'ROL_ADMIN_AUDITORIA', N'COMPUESTO')
+INSERT [dbo].[PERMISO] ([id_permiso], [nombre], [tipo]) VALUES (82, N'ACCESO_MODO_EMERGENCIA_DIGITOS', N'SIMPLE')
 SET IDENTITY_INSERT [dbo].[PERMISO] OFF
 GO
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 66)
@@ -512,6 +567,7 @@ INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 75)
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 76)
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 80)
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 81)
+INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (1, 82)
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (46, 47)
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (50, 47)
 INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (66, 56)
@@ -549,8 +605,9 @@ SET IDENTITY_INSERT [dbo].[TRADUCCION] OFF
 GO
 SET IDENTITY_INSERT [dbo].[USUARIO] ON 
 
-INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', 1)
-INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma]) VALUES (2, N'pedro', N'40510175845988F13F6162ED8526F0B09F73384467FA855E1E79B44A56562A58', NULL)
+INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', 1, 4723)
+INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (2, N'pedro', N'40510175845988F13F6162ED8526F0B09F73384467FA855E1E79B44A56562A58', NULL, 2213)
+INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (3, N'lucass', N'FE2592B42A727E977F055947385B709CC82B16B9A87F88C6ABF3900D65D0CDC3', NULL, 2994)
 SET IDENTITY_INSERT [dbo].[USUARIO] OFF
 GO
 INSERT [dbo].[USUARIO_PERMISO] ([id_usuario], [id_permiso]) VALUES (1, 1)
@@ -559,13 +616,23 @@ INSERT [dbo].[USUARIO_PERMISO] ([id_usuario], [id_permiso]) VALUES (1, 69)
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  Index [UQ__DIGITOS___80FC60E6E317FC9C]    Script Date: 10/07/2026 3:28:46 ******/
+ALTER TABLE [dbo].[DIGITOS_VERIFICADORES] ADD UNIQUE NONCLUSTERED 
+(
+	[Tabla] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 10/07/2026 3:28:46 ******/
 ALTER TABLE [dbo].[USUARIO] ADD UNIQUE NONCLUSTERED 
 (
 	[nombre] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[AUDITORIA_CAMBIOS] ADD  DEFAULT (getdate()) FOR [fecha_cambio]
+GO
+ALTER TABLE [dbo].[USUARIO] ADD  DEFAULT ((0)) FOR [DVH]
 GO
 ALTER TABLE [dbo].[PERMISO_HIJO]  WITH CHECK ADD FOREIGN KEY([id_hijo])
 REFERENCES [dbo].[PERMISO] ([id_permiso])
@@ -590,7 +657,7 @@ GO
 ALTER TABLE [dbo].[USUARIO_PERMISO]  WITH CHECK ADD FOREIGN KEY([id_usuario])
 REFERENCES [dbo].[USUARIO] ([id])
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarIdiomaPreferido]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarIdiomaPreferido]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -605,7 +672,7 @@ BEGIN
     WHERE id = @id_usuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarTraduccion]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarTraduccion]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -621,7 +688,20 @@ BEGIN
     WHERE id_idioma = @id_idioma AND id_etiqueta = @id_etiqueta
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AsignarPermisoAUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarUsuarioDVH]    Script Date: 10/07/2026 3:28:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_ActualizarUsuarioDVH]
+    @IdUsuario INT,
+    @NuevoDVH INT
+AS
+BEGIN
+    UPDATE USUARIO SET DVH = @NuevoDVH WHERE Id = @IdUsuario
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_AsignarPermisoAUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -639,7 +719,7 @@ BEGIN
     END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AsignarRelacionPermisos]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AsignarRelacionPermisos]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -653,7 +733,7 @@ BEGIN
     VALUES (@idPadre, @idHijo)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorial]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorial]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -673,7 +753,7 @@ BEGIN
     ORDER BY A.fecha_cambio DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorialDeUnUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorialDeUnUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -695,7 +775,7 @@ BEGIN
     ORDER BY A.fecha_cambio DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_Insertar]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_Insertar]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -710,7 +790,7 @@ BEGIN
     VALUES (@id_usuario, 'USUARIO', @nombre_anterior, @usuario_editor, GETDATE())
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_ObtenerUltimo]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_ObtenerUltimo]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -726,7 +806,7 @@ BEGIN
     ORDER BY fecha_cambio DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -748,7 +828,7 @@ BEGIN
     ORDER BY fecha DESC;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_CrearPermiso]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_CrearPermiso]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -762,7 +842,7 @@ INSERT INTO PERMISO (nombre, tipo) VALUES (@nombre, @tipo);
 SET @idPermiso = SCOPE_IDENTITY(); 
 END 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_EliminarPermiso]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_EliminarPermiso]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -774,7 +854,7 @@ BEGIN
     DELETE FROM PERMISO WHERE id_permiso = @id_permiso; 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_EliminarRelacionPermisos]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_EliminarRelacionPermisos]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -788,7 +868,23 @@ BEGIN
     WHERE id_padre = @id_padre AND id_hijo = @id_hijo
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InicializarIdioma]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GuardarDVV]    Script Date: 10/07/2026 3:28:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_GuardarDVV]
+    @NombreTabla VARCHAR(50),
+    @ValorDVV INT
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM DIGITOS_VERIFICADORES WHERE Tabla = @NombreTabla)
+        UPDATE DIGITOS_VERIFICADORES SET ValorDVV = @ValorDVV WHERE Tabla = @NombreTabla
+    ELSE
+        INSERT INTO DIGITOS_VERIFICADORES (Tabla, ValorDVV) VALUES (@NombreTabla, @ValorDVV)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_InicializarIdioma]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -808,7 +904,7 @@ BEGIN
     )
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -825,7 +921,7 @@ BEGIN
     VALUES (@usuario, @fecha, @evento, @informacion, @criticidad);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InsertarIdioma]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_InsertarIdioma]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -839,7 +935,7 @@ BEGIN
 	SELECT SCOPE_IDENTITY();
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ListarIdiomas]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ListarIdiomas]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -850,7 +946,7 @@ BEGIN
     SELECT id, nombre FROM IDIOMA;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ListarUsuarios]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ListarUsuarios]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -858,11 +954,11 @@ GO
 CREATE PROCEDURE [dbo].[sp_ListarUsuarios]
 AS
 BEGIN
-    SELECT id, nombre
+    SELECT id, nombre, DVH, id_idioma
     FROM USUARIO;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ModificarUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ModificarUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -877,7 +973,19 @@ BEGIN
     WHERE Id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosDePermiso]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerDVV]    Script Date: 10/07/2026 3:28:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_ObtenerDVV]
+    @NombreTabla VARCHAR(50)
+AS
+BEGIN
+    SELECT ValorDVV FROM DIGITOS_VERIFICADORES WHERE Tabla = @NombreTabla
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosDePermiso]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -892,7 +1000,7 @@ BEGIN
     WHERE ph.id_padre = @id_padre;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -908,7 +1016,7 @@ BEGIN
     WHERE PH.id_padre = @idPadre
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerIdiomaPorUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerIdiomaPorUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -923,7 +1031,7 @@ BEGIN
     WHERE U.id = @id_usuario
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerPermisosPorUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerPermisosPorUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -939,7 +1047,7 @@ WHERE UP.id_usuario = @idUsuario;
 END 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerRaices]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerRaices]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -952,7 +1060,7 @@ BEGIN
     WHERE P.id_permiso NOT IN (SELECT id_hijo FROM PERMISO_HIJO);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerRolesDeUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerRolesDeUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -967,7 +1075,7 @@ BEGIN
     WHERE up.id_usuario = @id_usuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -979,7 +1087,7 @@ BEGIN
     FROM PERMISO
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccion]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccion]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -996,7 +1104,7 @@ BEGIN
       AND T.id_idioma = @id_idioma
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccionesPorIdioma]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccionesPorIdioma]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1010,7 +1118,7 @@ BEGIN
     LEFT JOIN TRADUCCION T ON E.id = T.id_etiqueta AND T.id_idioma = @id_idioma
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Usuario_ObtenerPorId]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Usuario_ObtenerPorId]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1024,7 +1132,7 @@ BEGIN
     WHERE Id = @id_usuario
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 09/07/2026 4:37:27 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 10/07/2026 3:28:46 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

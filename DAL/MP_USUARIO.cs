@@ -54,19 +54,31 @@ namespace DAL
                     USUARIO u = new USUARIO();
                     u.Id = Convert.ToInt32(fila["id"]);
                     u.Nombre = fila["nombre"].ToString();
+                    if (fila["dvh"] != DBNull.Value)
+                    {
+                        u.Dvh = Convert.ToInt32(fila["dvh"]);
+                    }
+                    else
+                    {
+                        u.Dvh = 0; // Si es nulo en la BD, lo tratamos como 0
+                    }
+
                     listaUsuarios.Add(u);
                 }
             }
             catch (Exception ex)
-            {                
+            {
                 acceso.Cerrar();
                 throw new Exception("Error al intentar listar los usuarios desde la base de datos.", ex);
             }
 
             return listaUsuarios;
         }
+
+
+
         public BE.USUARIO ValidarUsuario(USUARIO usuario)
-        {            
+        {
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("nombre", usuario.Nombre));
             parametros.Add(acceso.CrearParametro("contrasena", usuario.Contrasena));
@@ -167,6 +179,27 @@ namespace DAL
             {
                 acceso.Cerrar();
                 throw new Exception("Error al obtener usuario para restauración: " + ex.Message);
+            }
+        }
+
+
+        //------------ Digitos Verificadores ----------
+        public void ActualizarDVH(USUARIO usuario)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@IdUsuario", usuario.Id));
+            parametros.Add(acceso.CrearParametro("@NuevoDVH", usuario.Dvh));
+
+            try
+            {
+                acceso.Abrir();
+                int res = acceso.Escribir("sp_ActualizarUsuarioDVH", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al actualizar Digitos verificadores Horizontales (DVH)");
             }
         }
     }

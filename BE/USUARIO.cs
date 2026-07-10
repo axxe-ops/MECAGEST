@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class USUARIO
+    public class USUARIO : IVerificarDigitos
     {
+        public USUARIO()
+        {
+            permisos = new List<COMPONENTE>();
+        }
+
         private int id;
         public int Id
         {
@@ -49,6 +54,35 @@ namespace BE
         }
 
 
+        //------------------- Digitos Verificadores -----------------
+
+        private int dvh;
+
+        
+
+        public int Dvh
+        {
+            get { return dvh; }
+            set { dvh = value; }
+        }
+
+
+        public string CalcularDVH()
+        {
+            // Ordenamos para que el orden de los elementos en la lista no afecte el cálculo
+            var permisosOrdenados = Permisos.OrderBy(p => p.Id).ToList();
+            string listaPermisos = string.Join(",", permisosOrdenados.Select(p => p.Id));
+
+            string datos = $"{Id}{Nombre}{Contrasena}{listaPermisos}";
+
+            int suma = 0;
+            for (int i = 0; i < datos.Length; i++)
+            {
+                suma += (int)datos[i] * (i + 1);
+            }
+
+            return suma.ToString();
+        }
 
 
 
@@ -62,5 +96,6 @@ namespace BE
             this.Nombre = memento.Nombre;
         }
 
-	}
+        
+    }
 }

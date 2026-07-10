@@ -89,6 +89,13 @@ namespace GUI
             
         }
 
+        private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSeguridad frm = new frmSeguridad();
+            frm.MdiParent = this;
+            frm.Show();            
+        }
+
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         { // Menu
             foreach (Form frm in this.MdiChildren.ToList())
@@ -161,5 +168,7 @@ namespace GUI
             var usuario = SERVICE.SESSIONMANAGER.ObtenerInstancia().usuario;
             tsslblUsuarioActual.Text = "Usuario: " + usuario.ToString();
         }
+
+        
     }
 }

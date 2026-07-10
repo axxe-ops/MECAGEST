@@ -33,7 +33,15 @@ namespace BLL
 
         public List<USUARIO> Listar()
         {
-            return mapperUsuario.Listar();
+            List<USUARIO> lista = mapperUsuario.Listar();
+
+            DAL.MP_PERMISO mapperPermiso = new DAL.MP_PERMISO();
+            foreach (var u in lista)
+            {                
+                u.Permisos = mapperPermiso.ObtenerPermisosUsuario(u);
+            }
+
+            return lista;
         }
 
         public void ActualizarIdiomaPreferido(USUARIO usuarioActual, IDIOMA nuevoIdioma)
@@ -49,6 +57,11 @@ namespace BLL
         public USUARIO ObtenerUsuarioPorId(int idUsuarioAfectado)
         {
             return mapperUsuario.ObtenerUsuarioPorId(idUsuarioAfectado);
+        }
+
+        public void ActualizarDVH(USUARIO usuario)
+        {
+            mapperUsuario.ActualizarDVH(usuario);
         }
     }
 }

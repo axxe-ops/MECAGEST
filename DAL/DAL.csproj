@@ -50,6 +50,7 @@
     <Compile Include="MP_PERMISO.cs" />
     <Compile Include="MP_TRADUCCION.cs" />
     <Compile Include="MP_USUARIO.cs" />
+    <Compile Include="MP_VERIFICARDIGITOS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

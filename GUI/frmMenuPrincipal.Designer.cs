@@ -44,6 +44,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslblUsuarioActual = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslblFecha_Hora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +88,8 @@
             this.bitacoraToolStripMenuItem,
             this.gestionPermisosToolStripMenuItem,
             this.gestionIdiomasToolStripMenuItem,
-            this.auditoriaToolStripMenuItem});
+            this.auditoriaToolStripMenuItem,
+            this.seguridadToolStripMenuItem});
             this.gestionAdminToolStripMenuItem.Name = "gestionAdminToolStripMenuItem";
             this.gestionAdminToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.gestionAdminToolStripMenuItem.Text = "Gestion Admin";
@@ -95,28 +97,28 @@
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bitacoraToolStripMenuItem.Text = "Gestion Bitacora";
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
             // 
             // gestionPermisosToolStripMenuItem
             // 
             this.gestionPermisosToolStripMenuItem.Name = "gestionPermisosToolStripMenuItem";
-            this.gestionPermisosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.gestionPermisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestionPermisosToolStripMenuItem.Text = "Gestion Permisos";
             this.gestionPermisosToolStripMenuItem.Click += new System.EventHandler(this.gestionPermisosToolStripMenuItem_Click);
             // 
             // gestionIdiomasToolStripMenuItem
             // 
             this.gestionIdiomasToolStripMenuItem.Name = "gestionIdiomasToolStripMenuItem";
-            this.gestionIdiomasToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.gestionIdiomasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestionIdiomasToolStripMenuItem.Text = "Gestion Idiomas";
             this.gestionIdiomasToolStripMenuItem.Click += new System.EventHandler(this.gestionIdiomasToolStripMenuItem_Click);
             // 
             // auditoriaToolStripMenuItem
             // 
             this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
-            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.auditoriaToolStripMenuItem.Text = "Auditoria";
             this.auditoriaToolStripMenuItem.Click += new System.EventHandler(this.auditoriaToolStripMenuItem_Click);
             // 
@@ -174,6 +176,13 @@
             this.tsslblFecha_Hora.Name = "tsslblFecha_Hora";
             this.tsslblFecha_Hora.Size = new System.Drawing.Size(0, 17);
             // 
+            // seguridadToolStripMenuItem
+            // 
+            this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
+            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.seguridadToolStripMenuItem.Text = "Seguridad";
+            this.seguridadToolStripMenuItem.Click += new System.EventHandler(this.seguridadToolStripMenuItem_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,5 +222,6 @@
         private System.Windows.Forms.ToolStripMenuItem gestionIdiomasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem auditoriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TRADUCCIONBLL.cs" />
     <Compile Include="USUARIO_CARETAKER.cs" />
+    <Compile Include="VERIFICARDIGITOS_BLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
