@@ -10,7 +10,7 @@
   <Class Name="BE.USUARIO">
     <Position X="8" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAKEAIACgAAAgAAAAQAAAAAAAgACggI=</HashCode>
+      <HashCode>AQACAAAAAAAAAAKEAIACgAAAgAAAAQAAAAAAAgECggI=</HashCode>
       <FileName>USUARIO.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -37,17 +37,45 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BE.USUARIO_MEMENTO">
-    <Position X="7.25" Y="5.75" Width="1.5" />
+    <Position X="9.75" Y="0.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>USUARIO_MEMENTO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="BE.IVerificarDigitos">
-    <Position X="2.75" Y="8.25" Width="1.5" />
+  <Class Name="BE.ETIQUETA">
+    <Position X="5.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAACEAAAAgAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>ETIQUETA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.IDIOMA">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>IDIOMA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.TRADUCCION">
+    <Position X="9.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAACCBAABAAQAAQAAAAAAAAAABAAAAgA=</HashCode>
+      <FileName>TRADUCCION.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BE.IVerificarDigitos">
+    <Position X="0.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAA=</HashCode>
       <FileName>IVerificarDigitos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BE.IObserverIdioma">
+    <Position X="4" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IObserverIdioma.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

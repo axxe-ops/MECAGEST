@@ -34,68 +34,7 @@ namespace GUI
 
 
         //---------------- BOTONES ------------------------------------
-        private void gestionPermisosToolStripMenuItem_Click(object sender, EventArgs e)
-        { //Gestion Permisos
-            if (SEGURIDAD.TienePermiso("ACCESO_GESTION_PERMISO"))
-            {
-                frmPermisos frm = new frmPermisos();
-                frm.MdiParent = this;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show("No tenés permiso para acceder a esta sección.", "Acceso Denegado",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-        }
-
-        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
-        { // Gestion Bitacora
-            if (SEGURIDAD.TienePermiso("ACCESO_GESTION_BITACORA"))
-            {
-                frmBitacora frm = new frmBitacora();
-                frm.MdiParent = this;
-                frm.Show();
-            }
-            else
-            {                
-                MessageBox.Show("No tenés permiso para ver la bitácora del sistema.", "Acceso Denegado",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void gestionIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmIdiomas frm = new frmIdiomas();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (SEGURIDAD.TienePermiso("ACCESO_AUDITORIA"))
-            {
-                frmAuditoria frm = new frmAuditoria();
-                frm.MdiParent = this;
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show("No tenés permiso para ver la auditoria del sistema.", "Acceso Denegado",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            
-        }
-
-        private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSeguridad frm = new frmSeguridad();
-            frm.MdiParent = this;
-            frm.Show();            
-        }
-
+        
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         { // Menu
             foreach (Form frm in this.MdiChildren.ToList())
@@ -169,6 +108,68 @@ namespace GUI
             tsslblUsuarioActual.Text = "Usuario: " + usuario.ToString();
         }
 
-        
+        private void gestiónBitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Gestion Bitacora
+            if (SEGURIDAD.TienePermiso("ACCESO_GESTION_BITACORA"))
+            {
+                frmBitacora frm = new frmBitacora();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tenés permiso para ver la bitácora del sistema.", "Acceso Denegado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void seguridadToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //seguridad
+            frmSeguridad frm = new frmSeguridad();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void auditoriaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //auditoria
+            if (SEGURIDAD.TienePermiso("ACCESO_AUDITORIA"))
+            {
+                frmAuditoria frm = new frmAuditoria();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tenés permiso para ver la auditoria del sistema.", "Acceso Denegado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void gestionPermisosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Gestion Permisos
+            if (SEGURIDAD.TienePermiso("ACCESO_GESTION_PERMISO"))
+            {
+                frmPermisos frm = new frmPermisos();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tenés permiso para acceder a esta sección.", "Acceso Denegado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void gestionIdiomasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Gestion Idiomas
+            frmIdiomas frm = new frmIdiomas();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
