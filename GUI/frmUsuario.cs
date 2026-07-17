@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmUsuario : Form
+    public partial class frmUsuario : Form, IObserverIdioma
     {
         IDIOMABLL gestorIdioma = new IDIOMABLL();
         BLL.USUARIO_BLL gestorUsuario = new BLL.USUARIO_BLL();
@@ -23,7 +23,9 @@ namespace GUI
         }
         private void frmUsuario_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
             CargarComboIdiomas();
+            ActualizarIdioma();
         }
 
 
@@ -84,6 +86,17 @@ namespace GUI
             cmbIdioma.SelectedItem = IDIOMABLL.ObtenerInstanciaIdioma().IdiomaActual;
         }
 
-        
+        public void ActualizarIdioma()
+        {
+            IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
+            btnVerHistorial.Text = traductor.ObtenerTraduccion("btnVerHistorial");
+            btnGuardarCambios.Text = traductor.ObtenerTraduccion("btnGuardarCambios");
+            lblNombreActual.Text = traductor.ObtenerTraduccion("lblNombreActual");
+            lblMail.Text = traductor.ObtenerTraduccion("lblMail");
+            lblPasswordNueva.Text = traductor.ObtenerTraduccion("lblPasswordNueva");
+            lblColocarNombre.Text = traductor.ObtenerTraduccion("lblColocarNombre");
+            btnCambiarIdioma.Text = traductor.ObtenerTraduccion("btnCambiarIdioma");
+            lblElegirIdioma.Text = traductor.ObtenerTraduccion("lblElegirIdioma");
+        }
     }
 }

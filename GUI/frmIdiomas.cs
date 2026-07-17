@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,7 @@ namespace GUI
         {
             InitializeComponent();
             IDIOMABLL.ObtenerInstanciaIdioma().Suscribir(this);
+
         }
 
         private void frmIdiomas_Load(object sender, EventArgs e)
@@ -97,13 +99,14 @@ namespace GUI
         //---------------- CONFIGURACIONES BASICAS ------------------------------------
 
         public void ActualizarIdioma()
-        {            
+        {
             IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
-            
-            lblNombreIdioma.Text = traductor.ObtenerTraduccion("lblNombreIdioma");
-            btnCrearIdioma.Text = traductor.ObtenerTraduccion("btnCrearIdioma");
+
+            btnExtraerEtiquetas.Text = traductor.ObtenerTraduccion("btnExtraerEtiquetas");
             btnSeleccionarIdioma.Text = traductor.ObtenerTraduccion("btnSeleccionarIdioma");
+            lblNombreIdioma.Text = traductor.ObtenerTraduccion("lblNombreIdioma");
             btnGuardarCambios.Text = traductor.ObtenerTraduccion("btnGuardarCambios");
+            btnCrearIdioma.Text = traductor.ObtenerTraduccion("btnCrearIdioma");
             lblSeleccionarIdioma.Text = traductor.ObtenerTraduccion("lblSeleccionarIdioma");
         }
 
@@ -180,6 +183,79 @@ namespace GUI
             // Esto evita que aparezca el cuadro de diálogo de error
             // y permite que la grilla siga funcionando normalmente.
             e.ThrowException = false;
+        }
+
+        private void btnExtraerEtiquetas_Click(object sender, EventArgs e)
+        {
+            var tiposFormularios = Assembly.GetExecutingAssembly().GetTypes()
+                            .Where(t => t.BaseType == typeof(Form));
+
+            foreach (var tipo in tiposFormularios)
+            {
+                // Instanciamos el formulario de forma temporal (invisible)
+                Form frm = (Form)Activator.CreateInstance(tipo);
+
+                Console.WriteLine($"--- Etiquetas del formulario: {frm.Name} ---");
+                List<string> etiquetas = ExtraerEtiquetasDeFormulario(frm.Controls);
+
+                foreach (var tag in etiquetas)
+                {
+                    Console.WriteLine($"INSERT INTO ETIQUETA (nombre) VALUES ('{tag}');");
+                }
+            }
+        }
+
+        private List<string> ExtraerEtiquetasDeFormulario(Control.ControlCollection controles)
+        {
+            List<string> listaEtiquetas = new List<string>();
+
+            foreach (Control c in controles)
+            {
+                // 1. Extraer el control actual si es tipo traducible
+                if (c is Label || c is Button || c is CheckBox || c is RadioButton || c is GroupBox)
+                {
+                    if (!string.IsNullOrEmpty(c.Name)) listaEtiquetas.Add(c.Name);
+                }
+
+                // 2. CASO ESPECIAL: MenuStrip
+                if (c is MenuStrip menu)
+                {
+                    foreach (ToolStripMenuItem item in menu.Items)
+                    {
+                        ExtraerItemsMenu(item, listaEtiquetas);
+                    }
+                }
+
+                // 3. CASO ESPECIAL: StatusStrip
+                if (c is StatusStrip status)
+                {
+                    foreach (ToolStripItem item in status.Items)
+                    {
+                        if (!string.IsNullOrEmpty(item.Name)) listaEtiquetas.Add(item.Name);
+                    }
+                }
+
+                // Recursividad normal
+                if (c.HasChildren)
+                {
+                    listaEtiquetas.AddRange(ExtraerEtiquetasDeFormulario(c.Controls));
+                }
+            }
+            return listaEtiquetas;
+        }
+
+        // Función auxiliar para menús desplegables (recursiva)
+        private void ExtraerItemsMenu(ToolStripMenuItem item, List<string> lista)
+        {
+            if (!string.IsNullOrEmpty(item.Name)) lista.Add(item.Name);
+
+            foreach (ToolStripItem subItem in item.DropDownItems)
+            {
+                if (subItem is ToolStripMenuItem subMenu)
+                {
+                    ExtraerItemsMenu(subMenu, lista);
+                }
+            }
         }
     }
 }

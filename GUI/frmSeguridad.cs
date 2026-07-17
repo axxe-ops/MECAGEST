@@ -1,4 +1,5 @@
 ﻿using BE;
+using SERVICE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmSeguridad : Form
+    public partial class frmSeguridad : Form, IObserverIdioma
     {
         BLL.USUARIO_BLL gestorUsuario = new BLL.USUARIO_BLL();
         SERVICE.VERIFICARDIGITOS_BLL gestorIntegridad = new SERVICE.VERIFICARDIGITOS_BLL();
@@ -23,7 +24,7 @@ namespace GUI
 
         private void frmSeguridad_Load(object sender, EventArgs e)
         {
-
+            ActualizarIdioma();
         }
 
 
@@ -91,6 +92,19 @@ namespace GUI
 
                 MessageBox.Show(ex.Message, "Error de Integridad", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+
+        //---------------- CONFIGURACIONES BASICAS ------------------------------------
+        
+        //observer
+        public void ActualizarIdioma()
+        {
+            IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
+            lblNotificacionBD.Text = traductor.ObtenerTraduccion("lblNotificacionBD");
+            lblTituloEstadoIntegridad.Text = traductor.ObtenerTraduccion("lblTituloEstadoIntegridad");
+            btnRecalcularDigitosVerificadores.Text = traductor.ObtenerTraduccion("btnRecalcularDigitosVerificadores");
+            btnVerificarIntegridad.Text = traductor.ObtenerTraduccion("btnVerificarIntegridad");
         }
     }
 }

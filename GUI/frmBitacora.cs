@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using SERVICE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmBitacora : Form
+    public partial class frmBitacora : Form, IObserverIdioma
     {
         SERVICE.BITACORABLL gestorBitacora = new SERVICE.BITACORABLL();
 
@@ -20,6 +22,8 @@ namespace GUI
         }
         private void frmBitacora_Load(object sender, EventArgs e)
         {
+            ActualizarIdioma();
+
             WindowState = FormWindowState.Maximized;
 
             dtpDesde.Value = DateTime.Now.AddDays(-7);
@@ -31,21 +35,9 @@ namespace GUI
 
         }
 
-        void ConfigurarComboBoxCriticidad()
-        {
-            var fuente = new List<object>
-            {
-                new { Text = "Todos", Value = 0 },
-                new { Text = "Bajo", Value = 1 },
-                new { Text = "Medio", Value = 3 },
-                new { Text = "Crítico", Value = 5 }
-            };
 
-            cmbCriticidad.DataSource = fuente;
-            cmbCriticidad.DisplayMember = "Text"; // Esto es lo que el usuario ve
-            cmbCriticidad.ValueMember = "Value";  // Esto es lo que usas en el código
-        }
-
+        //---------------- BOTONES ------------------------------------
+        
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ActualizarBitacora();
@@ -74,6 +66,35 @@ namespace GUI
             
             dgvBitacora.DataSource = null;
             dgvBitacora.DataSource = lista;
+        }
+
+
+
+        //---------------- CONFIGURACIONES BASICAS ------------------------------------
+
+        //observer
+        public void ActualizarIdioma()
+        {
+            IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
+            btnBuscar.Text = traductor.ObtenerTraduccion("btnBuscar");
+            lblDesde.Text = traductor.ObtenerTraduccion("lblDesde");
+            lblHasta.Text = traductor.ObtenerTraduccion("lblHasta");
+            lblCriticidad.Text = traductor.ObtenerTraduccion("lblCriticidad");
+            lblNombreUsuario.Text = traductor.ObtenerTraduccion("lblNombreUsuario");
+        }
+        void ConfigurarComboBoxCriticidad()
+        {
+            var fuente = new List<object>
+            {
+                new { Text = "Todos", Value = 0 },
+                new { Text = "Bajo", Value = 1 },
+                new { Text = "Medio", Value = 3 },
+                new { Text = "Crítico", Value = 5 }
+            };
+
+            cmbCriticidad.DataSource = fuente;
+            cmbCriticidad.DisplayMember = "Text"; // Esto es lo que el usuario ve
+            cmbCriticidad.ValueMember = "Value";  // Esto es lo que usas en el código
         }
 
     }

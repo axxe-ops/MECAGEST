@@ -85,5 +85,25 @@ namespace SERVICE
         {
             return mapperIdioma.BuscarTexto(nombreEtiqueta, id);
         }
+
+        public void CambiarIdiomaPorDefecto()
+        {
+            List<IDIOMA> listaIdiomas = Listar();
+            IDIOMA idiomaDefecto = null;
+
+            foreach (IDIOMA i in listaIdiomas)
+            {
+                if (i.Id == 2) //2 es ingles
+                {
+                    idiomaDefecto = i;
+                    break;
+                }
+            }
+
+            if (idiomaDefecto != null)
+            {
+                CambiarIdioma(idiomaDefecto);
+            }
+        }
     }
 }

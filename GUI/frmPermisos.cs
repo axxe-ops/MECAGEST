@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
-    public partial class frmPermisos : Form
+    public partial class frmPermisos : Form, IObserverIdioma
     {
         public BLL.PERMISO_BLL gestorPermisos = new BLL.PERMISO_BLL();
         public BLL.USUARIO_BLL gestorUsuarios = new USUARIO_BLL();
@@ -30,6 +30,8 @@ namespace GUI
 
             CargarArbol();                  //carga Arbol de permisos de forma estructurada
             CargarArbolCatalogoPermisos();  //carga Arbol de todos los permisos sin estructurar
+
+            ActualizarIdioma();
         }
 
 
@@ -294,6 +296,21 @@ namespace GUI
             List<COMPONENTE> listaOrdenada = new List<COMPONENTE>();
             listaOrdenada.AddRange(compuestos);
             listaOrdenada.AddRange(simples);
+        }
+
+        //---------------- CONFIGURACIONES BASICAS ------------------------------------
+
+        public void ActualizarIdioma()
+        {
+            IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
+            lblFlecha.Text = traductor.ObtenerTraduccion("lblFlecha");
+            btnActualizarPermisosSinEstructurar.Text = traductor.ObtenerTraduccion("btnActualizarPermisosSinEstructurar");
+            lblActualizarPermisosEstructurados.Text = traductor.ObtenerTraduccion("lblActualizarPermisosEstructurados");
+            btnAsignarPermisoAUsuario.Text = traductor.ObtenerTraduccion("btnAsignarPermisoAUsuario");
+            lblPermisosCatalogo.Text = traductor.ObtenerTraduccion("lblPermisosCatalogo");
+            btnEliminarRol.Text = traductor.ObtenerTraduccion("btnEliminarRol");
+            lblNombrePermiso.Text = traductor.ObtenerTraduccion("lblNombrePermiso");
+            btnCrearRol.Text = traductor.ObtenerTraduccion("btnCrearRol");
         }
     }
 }

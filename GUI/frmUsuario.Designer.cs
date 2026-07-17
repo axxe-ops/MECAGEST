@@ -40,12 +40,16 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.lblMail = new System.Windows.Forms.Label();
             this.btnVerHistorial = new System.Windows.Forms.Button();
+            this.gbActualizarDatosUsuario = new System.Windows.Forms.GroupBox();
+            this.gbCambiarIdioma = new System.Windows.Forms.GroupBox();
+            this.gbActualizarDatosUsuario.SuspendLayout();
+            this.gbCambiarIdioma.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbIdioma
             // 
             this.cmbIdioma.FormattingEnabled = true;
-            this.cmbIdioma.Location = new System.Drawing.Point(844, 46);
+            this.cmbIdioma.Location = new System.Drawing.Point(79, 47);
             this.cmbIdioma.Name = "cmbIdioma";
             this.cmbIdioma.Size = new System.Drawing.Size(186, 21);
             this.cmbIdioma.TabIndex = 0;
@@ -53,7 +57,7 @@
             // lblElegirIdioma
             // 
             this.lblElegirIdioma.AutoSize = true;
-            this.lblElegirIdioma.Location = new System.Drawing.Point(771, 49);
+            this.lblElegirIdioma.Location = new System.Drawing.Point(76, 31);
             this.lblElegirIdioma.Name = "lblElegirIdioma";
             this.lblElegirIdioma.Size = new System.Drawing.Size(67, 13);
             this.lblElegirIdioma.TabIndex = 1;
@@ -61,7 +65,7 @@
             // 
             // btnCambiarIdioma
             // 
-            this.btnCambiarIdioma.Location = new System.Drawing.Point(844, 80);
+            this.btnCambiarIdioma.Location = new System.Drawing.Point(79, 81);
             this.btnCambiarIdioma.Name = "btnCambiarIdioma";
             this.btnCambiarIdioma.Size = new System.Drawing.Size(186, 60);
             this.btnCambiarIdioma.TabIndex = 2;
@@ -71,15 +75,15 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(215, 111);
+            this.txtNombre.Location = new System.Drawing.Point(16, 97);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(183, 20);
+            this.txtNombre.Size = new System.Drawing.Size(278, 20);
             this.txtNombre.TabIndex = 3;
             // 
             // lblColocarNombre
             // 
             this.lblColocarNombre.AutoSize = true;
-            this.lblColocarNombre.Location = new System.Drawing.Point(127, 114);
+            this.lblColocarNombre.Location = new System.Drawing.Point(13, 81);
             this.lblColocarNombre.Name = "lblColocarNombre";
             this.lblColocarNombre.Size = new System.Drawing.Size(79, 13);
             this.lblColocarNombre.TabIndex = 4;
@@ -88,7 +92,7 @@
             // lblNombreActual
             // 
             this.lblNombreActual.AutoSize = true;
-            this.lblNombreActual.Location = new System.Drawing.Point(127, 80);
+            this.lblNombreActual.Location = new System.Drawing.Point(38, 31);
             this.lblNombreActual.Name = "lblNombreActual";
             this.lblNombreActual.Size = new System.Drawing.Size(110, 13);
             this.lblNombreActual.TabIndex = 5;
@@ -96,9 +100,9 @@
             // 
             // btnGuardarCambios
             // 
-            this.btnGuardarCambios.Location = new System.Drawing.Point(140, 205);
+            this.btnGuardarCambios.Location = new System.Drawing.Point(16, 236);
             this.btnGuardarCambios.Name = "btnGuardarCambios";
-            this.btnGuardarCambios.Size = new System.Drawing.Size(193, 60);
+            this.btnGuardarCambios.Size = new System.Drawing.Size(278, 60);
             this.btnGuardarCambios.TabIndex = 6;
             this.btnGuardarCambios.Text = "Guardar Cambios";
             this.btnGuardarCambios.UseVisualStyleBackColor = true;
@@ -107,7 +111,7 @@
             // lblPasswordNueva
             // 
             this.lblPasswordNueva.AutoSize = true;
-            this.lblPasswordNueva.Location = new System.Drawing.Point(137, 140);
+            this.lblPasswordNueva.Location = new System.Drawing.Point(13, 128);
             this.lblPasswordNueva.Name = "lblPasswordNueva";
             this.lblPasswordNueva.Size = new System.Drawing.Size(69, 13);
             this.lblPasswordNueva.TabIndex = 4;
@@ -116,23 +120,23 @@
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(215, 137);
+            this.txtPassword.Location = new System.Drawing.Point(16, 144);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(183, 20);
+            this.txtPassword.Size = new System.Drawing.Size(278, 20);
             this.txtPassword.TabIndex = 3;
             // 
             // txtMail
             // 
             this.txtMail.Enabled = false;
-            this.txtMail.Location = new System.Drawing.Point(215, 163);
+            this.txtMail.Location = new System.Drawing.Point(16, 195);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(183, 20);
+            this.txtMail.Size = new System.Drawing.Size(278, 20);
             this.txtMail.TabIndex = 3;
             // 
             // lblMail
             // 
             this.lblMail.AutoSize = true;
-            this.lblMail.Location = new System.Drawing.Point(137, 166);
+            this.lblMail.Location = new System.Drawing.Point(13, 179);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(61, 13);
             this.lblMail.TabIndex = 4;
@@ -140,7 +144,7 @@
             // 
             // btnVerHistorial
             // 
-            this.btnVerHistorial.Location = new System.Drawing.Point(339, 205);
+            this.btnVerHistorial.Location = new System.Drawing.Point(300, 236);
             this.btnVerHistorial.Name = "btnVerHistorial";
             this.btnVerHistorial.Size = new System.Drawing.Size(59, 60);
             this.btnVerHistorial.TabIndex = 7;
@@ -148,28 +152,49 @@
             this.btnVerHistorial.UseVisualStyleBackColor = true;
             this.btnVerHistorial.Click += new System.EventHandler(this.btnVerHistorial_Click);
             // 
+            // gbActualizarDatosUsuario
+            // 
+            this.gbActualizarDatosUsuario.Controls.Add(this.txtNombre);
+            this.gbActualizarDatosUsuario.Controls.Add(this.btnVerHistorial);
+            this.gbActualizarDatosUsuario.Controls.Add(this.txtPassword);
+            this.gbActualizarDatosUsuario.Controls.Add(this.btnGuardarCambios);
+            this.gbActualizarDatosUsuario.Controls.Add(this.txtMail);
+            this.gbActualizarDatosUsuario.Controls.Add(this.lblNombreActual);
+            this.gbActualizarDatosUsuario.Controls.Add(this.lblColocarNombre);
+            this.gbActualizarDatosUsuario.Controls.Add(this.lblMail);
+            this.gbActualizarDatosUsuario.Controls.Add(this.lblPasswordNueva);
+            this.gbActualizarDatosUsuario.Location = new System.Drawing.Point(24, 30);
+            this.gbActualizarDatosUsuario.Name = "gbActualizarDatosUsuario";
+            this.gbActualizarDatosUsuario.Size = new System.Drawing.Size(386, 318);
+            this.gbActualizarDatosUsuario.TabIndex = 8;
+            this.gbActualizarDatosUsuario.TabStop = false;
+            // 
+            // gbCambiarIdioma
+            // 
+            this.gbCambiarIdioma.Controls.Add(this.lblElegirIdioma);
+            this.gbCambiarIdioma.Controls.Add(this.cmbIdioma);
+            this.gbCambiarIdioma.Controls.Add(this.btnCambiarIdioma);
+            this.gbCambiarIdioma.Location = new System.Drawing.Point(438, 30);
+            this.gbCambiarIdioma.Name = "gbCambiarIdioma";
+            this.gbCambiarIdioma.Size = new System.Drawing.Size(346, 318);
+            this.gbCambiarIdioma.TabIndex = 9;
+            this.gbCambiarIdioma.TabStop = false;
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 599);
-            this.Controls.Add(this.btnVerHistorial);
-            this.Controls.Add(this.btnGuardarCambios);
-            this.Controls.Add(this.lblNombreActual);
-            this.Controls.Add(this.lblMail);
-            this.Controls.Add(this.lblPasswordNueva);
-            this.Controls.Add(this.lblColocarNombre);
-            this.Controls.Add(this.txtMail);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.btnCambiarIdioma);
-            this.Controls.Add(this.lblElegirIdioma);
-            this.Controls.Add(this.cmbIdioma);
+            this.Controls.Add(this.gbCambiarIdioma);
+            this.Controls.Add(this.gbActualizarDatosUsuario);
             this.Name = "frmUsuario";
             this.Text = "frmUsuario";
             this.Load += new System.EventHandler(this.frmUsuario_Load);
+            this.gbActualizarDatosUsuario.ResumeLayout(false);
+            this.gbActualizarDatosUsuario.PerformLayout();
+            this.gbCambiarIdioma.ResumeLayout(false);
+            this.gbCambiarIdioma.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -187,5 +212,7 @@
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label lblMail;
         private System.Windows.Forms.Button btnVerHistorial;
+        private System.Windows.Forms.GroupBox gbActualizarDatosUsuario;
+        private System.Windows.Forms.GroupBox gbCambiarIdioma;
     }
 }

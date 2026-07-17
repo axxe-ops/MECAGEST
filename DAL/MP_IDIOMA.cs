@@ -140,5 +140,10 @@ namespace DAL
                 throw new Exception("Error al inicializar las etiquetas para el nuevo idioma.", ex);
             }
         }
+
+        public void CambiarIdioma(int idIdiomaPorDefecto)
+        {
+            
+        }
     }
 }

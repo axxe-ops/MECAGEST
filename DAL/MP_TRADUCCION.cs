@@ -42,7 +42,6 @@ namespace DAL
 
                 if (res == 0)
                 {
-                    // ¡Aquí está la clave! 
                     // Si entra aquí, significa que la combinación ID_IDIOMA + ID_ETIQUETA no existe en la tabla TRADUCCION
                     MessageBox.Show("No se encontró la fila en BD para ID Idioma: " + obj.Idioma.Id + " y ID Etiqueta: " + obj.Etiqueta.Id);
                 }

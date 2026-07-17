@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SERVICE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,10 @@ namespace GUI
         [STAThread]
         static void Main()
         {
+            var gestor = IDIOMABLL.ObtenerInstanciaIdioma();
+            gestor.CambiarIdiomaPorDefecto();
+            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());

@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [MECAGEST]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Database [MECAGEST]    Script Date: 16/07/2026 22:59:43 ******/
 CREATE DATABASE [MECAGEST]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [MECAGEST] SET QUERY_STORE = OFF
 GO
 USE [MECAGEST]
 GO
-/****** Object:  Table [dbo].[AUDITORIA_CAMBIOS]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[AUDITORIA_CAMBIOS]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BITACORA]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[BITACORA]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DIGITOS_VERIFICADORES]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[DIGITOS_VERIFICADORES]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ETIQUETA]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[ETIQUETA]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +145,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[IDIOMA]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[IDIOMA]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +159,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PERMISO]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[PERMISO]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +174,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[PERMISO_HIJO]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -189,7 +189,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TRADUCCION]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[TRADUCCION]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -205,7 +205,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[USUARIO]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -222,7 +222,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Table [dbo].[USUARIO_PERMISO]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -500,6 +500,26 @@ INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informaci
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (234, N'lucass', CAST(N'2026-07-10T03:24:43.977' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (235, N'axel', CAST(N'2026-07-10T03:25:15.217' AS DateTime), N'Error de Seguridad Crítico', N'Detalle técnico: ID 3: DVH incorrecto. BD:2189 | Calculado:2994', 5)
 INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (236, N'lucass', CAST(N'2026-07-10T03:27:01.247' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (237, N'axel', CAST(N'2026-07-10T18:22:57.087' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (238, N'axel', CAST(N'2026-07-10T18:33:10.323' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1182, N'axel', CAST(N'2026-07-16T14:49:31.057' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1183, N'axel', CAST(N'2026-07-16T15:15:17.977' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1184, N'INVITADO', CAST(N'2026-07-16T15:16:27.937' AS DateTime), N'Intento de inicio de sesión fallido', N'El usuario intentó acceder sin éxito.', 3)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1185, N'axel', CAST(N'2026-07-16T15:16:32.563' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1186, N'axel', CAST(N'2026-07-16T21:34:32.247' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1187, N'axel', CAST(N'2026-07-16T21:46:10.800' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1188, N'axel', CAST(N'2026-07-16T22:11:18.247' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1189, N'axel', CAST(N'2026-07-16T22:12:43.987' AS DateTime), N'Cierre de sesión', N'El usuario ha finalizado su sesión de trabajo correctamente.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1190, N'axel', CAST(N'2026-07-16T22:12:58.223' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1191, N'axel', CAST(N'2026-07-16T22:28:09.440' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1192, N'axel', CAST(N'2026-07-16T22:38:56.377' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1193, N'axel', CAST(N'2026-07-16T22:43:09.610' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1194, N'axel', CAST(N'2026-07-16T22:46:08.347' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1195, N'axel', CAST(N'2026-07-16T22:46:57.653' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1196, N'axel', CAST(N'2026-07-16T22:54:03.757' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1197, N'axel', CAST(N'2026-07-16T22:54:18.200' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1198, N'axel', CAST(N'2026-07-16T22:58:17.693' AS DateTime), N'Inicio de sesión exitoso', N'El usuario ha ingresado al sistema desde la IP local.', 1)
+INSERT [dbo].[BITACORA] ([id_bitacora], [usuario], [fecha], [evento], [informacion], [criticidad]) VALUES (1199, N'axel', CAST(N'2026-07-16T22:58:33.493' AS DateTime), N'Salida del sistema', N'El usuario ha salido del sistema correctamente y se ha cerrado la sesión automáticamente', 1)
 SET IDENTITY_INSERT [dbo].[BITACORA] OFF
 GO
 SET IDENTITY_INSERT [dbo].[DIGITOS_VERIFICADORES] ON 
@@ -509,13 +529,66 @@ SET IDENTITY_INSERT [dbo].[DIGITOS_VERIFICADORES] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ETIQUETA] ON 
 
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (1, N'lbl_usuario')
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (2, N'btn_guardar')
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (3, N'lblNombreIdioma')
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (4, N'btnCrearIdioma')
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (5, N'btnSeleccionarIdioma')
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (6, N'btnGuardarCambios')
-INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (7, N'lblSeleccionarIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (57, N'btnCerrar')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (58, N'btnVolverAtras')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (59, N'btnBuscar')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (60, N'lblDesde')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (61, N'lblHasta')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (62, N'lblCriticidad')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (63, N'lblNombreUsuario')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (64, N'btnExtraerEtiquetas')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (65, N'btnSeleccionarIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (66, N'lblNombreIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (67, N'btnGuardarCambios')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (68, N'btnCrearIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (69, N'lblSeleccionarIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (70, N'lblErrorSeguridad')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (71, N'btnMostrar_Ocultar')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (72, N'lblResultado')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (73, N'btnIniciarSesion')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (74, N'lblNombre')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (75, N'lblContraseña')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (76, N'lblParaProfe')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (77, N'menuStrip1')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (78, N'lblFlecha')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (79, N'btnActualizarPermisosSinEstructurar')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (80, N'lblActualizarPermisosEstructurados')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (81, N'btnAsignarPermisoAUsuario')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (82, N'lblPermisosCatalogo')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (83, N'btnEliminarRol')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (84, N'lblNombrePermiso')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (85, N'btnCrearRol')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (86, N'lblNotificacionBD')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (87, N'lblTituloEstadoIntegridad')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (88, N'btnRecalcularDigitosVerificadores')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (89, N'btnVerificarIntegridad')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (90, N'btnVerHistorial')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (91, N'btnGuardarCambios')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (92, N'lblNombreActual')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (93, N'lblMail')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (94, N'lblPasswordNueva')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (95, N'lblColocarNombre')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (96, N'btnCambiarIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (97, N'lblElegirIdioma')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (100, N'menúToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (101, N'gestionTurnosToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (102, N'reservarTurnoToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (103, N'agendaToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (104, N'gestionServiciosToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (105, N'ordenesDeTrabajoToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (106, N'gestionStockToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (107, N'repuestosToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (108, N'sistemaToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (109, N'usuarioToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (110, N'cerrarSesiónToolStripMenuItem1')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (111, N'salirToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (112, N'seguridadToolStripMenuItem1')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (113, N'gestiónBitacoraToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (114, N'seguridadToolStripMenuItem2')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (115, N'auditoriaToolStripMenuItem1')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (116, N'configuracionToolStripMenuItem')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (117, N'gestionPermisosToolStripMenuItem1')
+INSERT [dbo].[ETIQUETA] ([id], [nombre]) VALUES (118, N'gestionIdiomasToolStripMenuItem1')
 SET IDENTITY_INSERT [dbo].[ETIQUETA] OFF
 GO
 SET IDENTITY_INSERT [dbo].[IDIOMA] ON 
@@ -582,30 +655,192 @@ INSERT [dbo].[PERMISO_HIJO] ([id_padre], [id_hijo]) VALUES (81, 78)
 GO
 SET IDENTITY_INSERT [dbo].[TRADUCCION] ON 
 
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (1, 3, 1, N'Nombre del Idioma')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (2, 4, 1, N'Crear Idioma')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (3, 5, 1, N'Seleccionar')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (4, 6, 1, N'Guardar Cambios')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (5, 7, 1, N'Seleccionar Idioma:')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (6, 1, 2, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (7, 2, 2, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (8, 3, 2, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (9, 4, 2, N'lololo')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (10, 5, 2, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (11, 6, 2, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (12, 7, 2, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (13, 1, 4, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (14, 2, 4, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (15, 3, 4, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (16, 4, 4, N'Creao Idiomao')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (17, 5, 4, N'Seleconao')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (18, 6, 4, N'')
-INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (19, 7, 4, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (20, 57, 1, N'<----------')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (21, 58, 1, N'Volver Atrás')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (22, 59, 1, N'Buscar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (23, 60, 1, N'Desde')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (24, 61, 1, N'Hasta')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (25, 62, 1, N'Criticidad')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (26, 63, 1, N'Nombre Usuario')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (27, 64, 1, N'Extraer Etiquetas')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (28, 65, 1, N'Seleccionar Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (29, 66, 1, N'Nombre de Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (30, 67, 1, N'Guardar Cambios')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (31, 68, 1, N'Insertar Nuevo Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (32, 69, 1, N'Seleccionar Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (33, 70, 1, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (34, 71, 1, N'???')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (35, 72, 1, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (36, 73, 1, N'Iniciar Sesion')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (37, 74, 1, N'Usuario')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (38, 75, 1, N'Contraseña')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (39, 76, 1, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (40, 77, 1, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (41, 78, 1, N'<----------')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (42, 79, 1, N'Actualizar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (43, 80, 1, N'Actualizar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (44, 81, 1, N'Asignar Permiso')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (45, 82, 1, N'Catalogo de Permisos')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (46, 83, 1, N'Eliminar Rol')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (47, 84, 1, N'Nombre')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (48, 85, 1, N'Crear Rol')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (49, 86, 1, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (50, 87, 1, N'Estado de Integridad de la Base de Datos:')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (51, 88, 1, N'Recalcular Digitos Verificadores')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (52, 89, 1, N'Verificar Integridad de la Base de Datos')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (53, 90, 1, N'Ver Historial')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (54, 91, 1, N'Guardar Cambios')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (55, 92, 1, N'Tu nombre actual es: ')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (56, 93, 1, N'Nuevo Mail')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (57, 94, 1, N'Nueva Clave')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (58, 95, 1, N'Nuevo Nombre')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (59, 96, 1, N'Cambiar Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (60, 97, 1, N'Elegir Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (61, 57, 2, N'<----------')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (62, 58, 2, N'Go Back')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (63, 59, 2, N'Search')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (64, 60, 2, N'From')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (65, 61, 2, N'To')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (66, 62, 2, N'Criticality')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (67, 63, 2, N'User Name')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (68, 64, 2, N'Extract Tags')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (69, 65, 2, N'Select Language')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (70, 66, 2, N'Language Name')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (71, 67, 2, N'Save Changes')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (72, 68, 2, N'Insert New Language')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (73, 69, 2, N'Select Language')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (74, 70, 2, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (75, 71, 2, N'???')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (76, 72, 2, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (77, 73, 2, N'Log In')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (78, 74, 2, N'User')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (79, 75, 2, N'Password')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (80, 76, 2, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (81, 77, 2, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (82, 78, 2, N'<----------')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (83, 79, 2, N'Update')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (84, 80, 2, N'Update')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (85, 81, 2, N'Assign Permission')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (86, 82, 2, N'Permissions Catalog')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (87, 83, 2, N'Delete Role')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (88, 84, 2, N'Name')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (89, 85, 2, N'Create Role')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (90, 86, 2, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (91, 87, 2, N'Database Integrity Status:')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (92, 88, 2, N'Recalculate Check Digits')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (93, 89, 2, N'Verify Database Integrity')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (94, 90, 2, N'View History')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (95, 91, 2, N'Save Changes')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (96, 92, 2, N'Your current name is:')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (97, 93, 2, N'New Email')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (98, 94, 2, N'New Password')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (99, 95, 2, N'New Name')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (100, 96, 2, N'Change Language')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (101, 97, 2, N'Choose Language')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (102, 57, 4, N'<----------')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (103, 58, 4, N'Voltar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (104, 59, 4, N'Buscar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (105, 60, 4, N'De')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (106, 61, 4, N'Até')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (107, 62, 4, N'Criticidade')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (108, 63, 4, N'Nome de Usuário')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (109, 64, 4, N'Extrair Etiquetas')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (110, 65, 4, N'Selecionar Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (111, 66, 4, N'Nome do Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (112, 67, 4, N'Salvar Alterações')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (113, 68, 4, N'Inserir Novo Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (114, 69, 4, N'Selecionar Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (115, 70, 4, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (116, 71, 4, N'???')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (117, 72, 4, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (118, 73, 4, N'Iniciar Sessão')
+GO
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (119, 74, 4, N'Usuário')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (120, 75, 4, N'Senha')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (121, 76, 4, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (122, 77, 4, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (123, 78, 4, N'<----------')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (124, 79, 4, N'Atualizar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (125, 80, 4, N'Atualizar')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (126, 81, 4, N'Atribuir Permissão')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (127, 82, 4, N'Catálogo de Permissões')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (128, 83, 4, N'Excluir Função')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (129, 84, 4, N'Nome')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (130, 85, 4, N'Criar Função')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (131, 86, 4, N'')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (132, 87, 4, N'Status de Integridade do Banco de Dados:')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (133, 88, 4, N'Recalcular Dígitos Verificadores')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (134, 89, 4, N'Verificar Integridade do Banco de Dados')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (135, 90, 4, N'Ver Histórico')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (136, 91, 4, N'Salvar Alterações')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (137, 92, 4, N'Seu nome atual é:')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (138, 93, 4, N'Novo E-mail')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (139, 94, 4, N'Nova Senha')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (140, 95, 4, N'Novo Nome')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (141, 96, 4, N'Alterar Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (142, 97, 4, N'Escolher Idioma')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (145, 100, 1, N'Menú')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (146, 101, 1, N'Gestión Turnos')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (147, 102, 1, N'Reservar Turno')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (148, 103, 1, N'Agenda')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (149, 104, 1, N'Gestion Servicios')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (150, 105, 1, N'Orden Trabajo (OT)')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (151, 106, 1, N'Gestión Inventario')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (152, 107, 1, N'Repuestos')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (153, 108, 1, N'Sistema')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (154, 109, 1, N'Usuario')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (155, 110, 1, N'Cerrar Sesion')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (156, 111, 1, N'Salir')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (157, 112, 1, N'Seguridad')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (158, 113, 1, N'Gestión Bitácora')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (159, 114, 1, N'Gestión Seguridad')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (160, 115, 1, N'Auditoría')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (161, 116, 1, N'Configuración')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (162, 117, 1, N'Gestión Permisos')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (163, 118, 1, N'Gestión Idiomas')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (166, 100, 4, N'Menu')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (167, 101, 4, N'Gestão de Consultas')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (168, 102, 4, N'Agendar Consulta')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (169, 103, 4, N'Agenda')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (170, 104, 4, N'Gestão de Serviços')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (171, 105, 4, N'Ordem de Serviço (OS)')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (172, 106, 4, N'Gestão de Estoque')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (173, 107, 4, N'Peças de Reposição')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (174, 108, 4, N'Sistema')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (175, 109, 4, N'Usuário')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (176, 110, 4, N'Encerrar Sessão')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (177, 111, 4, N'Sair')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (178, 112, 4, N'Segurança')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (179, 113, 4, N'Gestão de Bitácora')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (180, 114, 4, N'Gestão de Segurança')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (181, 115, 4, N'Auditoria')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (182, 116, 4, N'Configurações')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (183, 117, 4, N'Gestão de Permissões')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (184, 118, 4, N'Gestão de Idiomas')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (187, 100, 2, N'Menu')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (188, 101, 2, N'Appointment Management')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (189, 102, 2, N'Book Appointment')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (190, 103, 2, N'Schedule')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (191, 104, 2, N'Service Management')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (192, 105, 2, N'Work Order (WO)')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (193, 106, 2, N'Inventory Management')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (194, 107, 2, N'Spare Parts')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (195, 108, 2, N'System')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (196, 109, 2, N'User')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (197, 110, 2, N'Log Out')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (198, 111, 2, N'Exit')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (199, 112, 2, N'Security')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (200, 113, 2, N'Log Management')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (201, 114, 2, N'Security Management')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (202, 115, 2, N'Audit')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (203, 116, 2, N'Settings')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (204, 117, 2, N'Permissions Management')
+INSERT [dbo].[TRADUCCION] ([id], [id_etiqueta], [id_idioma], [texto]) VALUES (205, 118, 2, N'Language Management')
 SET IDENTITY_INSERT [dbo].[TRADUCCION] OFF
 GO
 SET IDENTITY_INSERT [dbo].[USUARIO] ON 
 
-INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', 1, 4723)
+INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (1, N'axel', N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', 4, 4723)
 INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (2, N'pedro', N'40510175845988F13F6162ED8526F0B09F73384467FA855E1E79B44A56562A58', NULL, 2213)
 INSERT [dbo].[USUARIO] ([id], [nombre], [contrasena], [id_idioma], [DVH]) VALUES (3, N'lucass', N'FE2592B42A727E977F055947385B709CC82B16B9A87F88C6ABF3900D65D0CDC3', NULL, 2994)
 SET IDENTITY_INSERT [dbo].[USUARIO] OFF
@@ -616,7 +851,7 @@ INSERT [dbo].[USUARIO_PERMISO] ([id_usuario], [id_permiso]) VALUES (1, 69)
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__DIGITOS___80FC60E6E317FC9C]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Index [UQ__DIGITOS___80FC60E6E317FC9C]    Script Date: 16/07/2026 22:59:43 ******/
 ALTER TABLE [dbo].[DIGITOS_VERIFICADORES] ADD UNIQUE NONCLUSTERED 
 (
 	[Tabla] ASC
@@ -624,7 +859,7 @@ ALTER TABLE [dbo].[DIGITOS_VERIFICADORES] ADD UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  Index [UQ__USUARIO__72AFBCC6CA9015B2]    Script Date: 16/07/2026 22:59:43 ******/
 ALTER TABLE [dbo].[USUARIO] ADD UNIQUE NONCLUSTERED 
 (
 	[nombre] ASC
@@ -657,7 +892,7 @@ GO
 ALTER TABLE [dbo].[USUARIO_PERMISO]  WITH CHECK ADD FOREIGN KEY([id_usuario])
 REFERENCES [dbo].[USUARIO] ([id])
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarIdiomaPreferido]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarIdiomaPreferido]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -672,7 +907,7 @@ BEGIN
     WHERE id = @id_usuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarTraduccion]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarTraduccion]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -683,12 +918,20 @@ CREATE PROCEDURE [dbo].[sp_ActualizarTraduccion]
     @texto NVARCHAR(MAX)
 AS
 BEGIN
+    -- Primero intentamos actualizar
     UPDATE TRADUCCION 
     SET texto = @texto 
-    WHERE id_idioma = @id_idioma AND id_etiqueta = @id_etiqueta
+    WHERE id_idioma = @id_idioma AND id_etiqueta = @id_etiqueta;
+
+    -- Si no se actualizó ninguna fila (@@ROWCOUNT es 0), insertamos
+    IF @@ROWCOUNT = 0
+    BEGIN
+        INSERT INTO TRADUCCION (id_idioma, id_etiqueta, texto)
+        VALUES (@id_idioma, @id_etiqueta, @texto);
+    END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarUsuarioDVH]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarUsuarioDVH]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -701,7 +944,7 @@ BEGIN
     UPDATE USUARIO SET DVH = @NuevoDVH WHERE Id = @IdUsuario
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AsignarPermisoAUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AsignarPermisoAUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -719,7 +962,7 @@ BEGIN
     END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AsignarRelacionPermisos]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AsignarRelacionPermisos]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -733,7 +976,7 @@ BEGIN
     VALUES (@idPadre, @idHijo)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorial]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorial]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -753,7 +996,7 @@ BEGIN
     ORDER BY A.fecha_cambio DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorialDeUnUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Auditoria_ObtenerHistorialDeUnUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -775,7 +1018,7 @@ BEGIN
     ORDER BY A.fecha_cambio DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_Insertar]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_Insertar]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -790,7 +1033,7 @@ BEGIN
     VALUES (@id_usuario, 'USUARIO', @nombre_anterior, @usuario_editor, GETDATE())
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_ObtenerUltimo]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AuditoriaUsuario_ObtenerUltimo]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -806,7 +1049,7 @@ BEGIN
     ORDER BY fecha_cambio DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ConsultarBitacora]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -828,7 +1071,7 @@ BEGIN
     ORDER BY fecha DESC;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_CrearPermiso]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_CrearPermiso]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -842,7 +1085,7 @@ INSERT INTO PERMISO (nombre, tipo) VALUES (@nombre, @tipo);
 SET @idPermiso = SCOPE_IDENTITY(); 
 END 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_EliminarPermiso]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_EliminarPermiso]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -854,7 +1097,7 @@ BEGIN
     DELETE FROM PERMISO WHERE id_permiso = @id_permiso; 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_EliminarRelacionPermisos]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_EliminarRelacionPermisos]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -868,7 +1111,7 @@ BEGIN
     WHERE id_padre = @id_padre AND id_hijo = @id_hijo
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GuardarDVV]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GuardarDVV]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -884,7 +1127,7 @@ BEGIN
         INSERT INTO DIGITOS_VERIFICADORES (Tabla, ValorDVV) VALUES (@NombreTabla, @ValorDVV)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InicializarIdioma]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_InicializarIdioma]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -904,7 +1147,7 @@ BEGIN
     )
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_InsertarBitacora]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -921,7 +1164,7 @@ BEGIN
     VALUES (@usuario, @fecha, @evento, @informacion, @criticidad);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_InsertarIdioma]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_InsertarIdioma]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -935,7 +1178,7 @@ BEGIN
 	SELECT SCOPE_IDENTITY();
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ListarIdiomas]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ListarIdiomas]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -946,7 +1189,7 @@ BEGIN
     SELECT id, nombre FROM IDIOMA;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ListarUsuarios]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ListarUsuarios]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -958,7 +1201,7 @@ BEGIN
     FROM USUARIO;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ModificarUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ModificarUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -973,7 +1216,7 @@ BEGIN
     WHERE Id = @id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerDVV]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerDVV]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -985,7 +1228,7 @@ BEGIN
     SELECT ValorDVV FROM DIGITOS_VERIFICADORES WHERE Tabla = @NombreTabla
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosDePermiso]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosDePermiso]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1000,7 +1243,7 @@ BEGIN
     WHERE ph.id_padre = @id_padre;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerHijosPorPadre]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1016,7 +1259,7 @@ BEGIN
     WHERE PH.id_padre = @idPadre
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerIdiomaPorUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerIdiomaPorUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1031,7 +1274,7 @@ BEGIN
     WHERE U.id = @id_usuario
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerPermisosPorUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerPermisosPorUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1047,7 +1290,7 @@ WHERE UP.id_usuario = @idUsuario;
 END 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerRaices]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerRaices]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1060,7 +1303,7 @@ BEGIN
     WHERE P.id_permiso NOT IN (SELECT id_hijo FROM PERMISO_HIJO);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerRolesDeUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerRolesDeUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1075,7 +1318,7 @@ BEGIN
     WHERE up.id_usuario = @id_usuario;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTodosLosPermisos]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1087,7 +1330,7 @@ BEGIN
     FROM PERMISO
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccion]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccion]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1104,7 +1347,7 @@ BEGIN
       AND T.id_idioma = @id_idioma
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccionesPorIdioma]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTraduccionesPorIdioma]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1118,7 +1361,7 @@ BEGIN
     LEFT JOIN TRADUCCION T ON E.id = T.id_etiqueta AND T.id_idioma = @id_idioma
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Usuario_ObtenerPorId]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Usuario_ObtenerPorId]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1132,7 +1375,7 @@ BEGIN
     WHERE Id = @id_usuario
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 10/07/2026 3:28:46 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ValidarUsuario]    Script Date: 16/07/2026 22:59:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

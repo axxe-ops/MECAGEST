@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : Form, IObserverIdioma
     {
         private BLL.USUARIO_BLL gestorUsuario = new BLL.USUARIO_BLL();
         private SERVICE.VERIFICARDIGITOS_BLL gestorIntegridad = new VERIFICARDIGITOS_BLL();
@@ -23,7 +23,8 @@ namespace GUI
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
+        {
+            ActualizarIdioma();
 
             txtContraseña.UseSystemPasswordChar = true; //contraseñatxt oculta predeterminadamente
             WindowState = FormWindowState.Maximized;
@@ -139,8 +140,22 @@ namespace GUI
             }
         }
 
+        //---------------- CONFIGURACIONES BASICAS ------------------------------------
 
-        //---------------- Digitos Verificadores ------------------------------------
+        //observer
+        public void ActualizarIdioma()
+        {
+            IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
+            lblErrorSeguridad.Text = traductor.ObtenerTraduccion("lblErrorSeguridad");
+            btnMostrar_Ocultar.Text = traductor.ObtenerTraduccion("btnMostrar_Ocultar");
+            lblResultado.Text = traductor.ObtenerTraduccion("lblResultado");
+            btnIniciarSesion.Text = traductor.ObtenerTraduccion("btnIniciarSesion");
+            lblNombre.Text = traductor.ObtenerTraduccion("lblNombre");
+            lblContraseña.Text = traductor.ObtenerTraduccion("lblContraseña");
+            lblParaProfe.Text = traductor.ObtenerTraduccion("lblParaProfe");
+        }
+
+        //Digitos Verificadores
         private void VerificarIntegridad()
         {
             List<USUARIO> lista = gestorUsuario.Listar();

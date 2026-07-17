@@ -13,18 +13,18 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmAuditoria : Form
+    public partial class frmAuditoria : Form, IObserverIdioma
     {
         SERVICE.AUDITORIA gestorAuditoria = new SERVICE.AUDITORIA();
         USUARIO_BLL gestorUsuario = new USUARIO_BLL();
 
         public frmAuditoria()
-        {
+        {            
             InitializeComponent();
         }
 
         private void frmAuditoria_Load(object sender, EventArgs e)
-        {
+        {   
             USUARIO usuario = SESSIONMANAGER.ObtenerInstancia().usuario;
 
             if (SEGURIDAD.TienePermiso("PERMISO_AUDITORIA_HISTORIAL_COMO_ADMIN"))
@@ -40,24 +40,13 @@ namespace GUI
                 btnVolverAtras.Enabled = false;
             }
 
-
             ConfigurarDgvHistorial();
+            ActualizarIdioma();
+            WindowState = FormWindowState.Maximized;
 
         }
 
-        private void ConfigurarDgvHistorial()
-        {
-            dgvHistorial.Columns["valor_anterior"].HeaderText = "Valor Histórico";
-            dgvHistorial.Columns["usuario_editor"].HeaderText = "Editado por";
-            dgvHistorial.Columns["fecha_cambio"].HeaderText = "Fecha y Hora";
-            if (dgvHistorial.Columns.Contains("UsuarioAfectado"))
-            {
-                dgvHistorial.Columns["UsuarioAfectado"].HeaderText = "Usuario (Entidad)";
-            }
-
-            dgvHistorial.Columns["id"].Visible = false;
-            dgvHistorial.Columns["id_entidad"].Visible = false;
-        }
+        //---------------- BOTONES ------------------------------------
 
         private void btnVolverAtras_Click(object sender, EventArgs e)
         {
@@ -95,10 +84,32 @@ namespace GUI
                 MessageBox.Show("Error al restaurar: " + ex.Message);
             }
 
-            
-
         }
 
+
+        //---------------- CONFIGURACIONES BASICAS ------------------------------------
+
+        //observer
+        public void ActualizarIdioma()
+        {
+            IDIOMABLL traductor = IDIOMABLL.ObtenerInstanciaIdioma();
+            btnCerrar.Text = traductor.ObtenerTraduccion("btnCerrar");
+            btnVolverAtras.Text = traductor.ObtenerTraduccion("btnVolverAtras");
+        }
+
+        private void ConfigurarDgvHistorial()
+        {
+            dgvHistorial.Columns["valor_anterior"].HeaderText = "Valor Histórico";
+            dgvHistorial.Columns["usuario_editor"].HeaderText = "Editado por";
+            dgvHistorial.Columns["fecha_cambio"].HeaderText = "Fecha y Hora";
+            if (dgvHistorial.Columns.Contains("UsuarioAfectado"))
+            {
+                dgvHistorial.Columns["UsuarioAfectado"].HeaderText = "Usuario (Entidad)";
+            }
+
+            dgvHistorial.Columns["id"].Visible = false;
+            dgvHistorial.Columns["id_entidad"].Visible = false;
+        }
         private void ActualizarToolStripSesion()
         {
             var menu = this.MdiParent as frmMenuPrincipal;
@@ -107,6 +118,5 @@ namespace GUI
                 menu.ActualizarBarraEstado();
             }
         }
-
     }
 }

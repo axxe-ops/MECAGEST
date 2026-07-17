@@ -36,6 +36,7 @@
             this.dgvIdiomas = new System.Windows.Forms.DataGridView();
             this.btnGuardarCambios = new System.Windows.Forms.Button();
             this.btnSeleccionarIdioma = new System.Windows.Forms.Button();
+            this.btnExtraerEtiquetas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,11 +113,22 @@
             this.btnSeleccionarIdioma.UseVisualStyleBackColor = true;
             this.btnSeleccionarIdioma.Click += new System.EventHandler(this.btnSeleccionarIdioma_Click);
             // 
+            // btnExtraerEtiquetas
+            // 
+            this.btnExtraerEtiquetas.Location = new System.Drawing.Point(395, 626);
+            this.btnExtraerEtiquetas.Name = "btnExtraerEtiquetas";
+            this.btnExtraerEtiquetas.Size = new System.Drawing.Size(157, 52);
+            this.btnExtraerEtiquetas.TabIndex = 7;
+            this.btnExtraerEtiquetas.Text = "Extraer Etiquetas";
+            this.btnExtraerEtiquetas.UseVisualStyleBackColor = true;
+            this.btnExtraerEtiquetas.Click += new System.EventHandler(this.btnExtraerEtiquetas_Click);
+            // 
             // frmIdiomas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1123, 690);
+            this.Controls.Add(this.btnExtraerEtiquetas);
             this.Controls.Add(this.btnSeleccionarIdioma);
             this.Controls.Add(this.dgvIdiomas);
             this.Controls.Add(this.txtNombreIdioma);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.DataGridView dgvIdiomas;
         private System.Windows.Forms.Button btnGuardarCambios;
         private System.Windows.Forms.Button btnSeleccionarIdioma;
+        private System.Windows.Forms.Button btnExtraerEtiquetas;
     }
 }
